@@ -1,4 +1,4 @@
-# NimTP6g6
+# NimTP6G6
 Projet Informatique Semestre 2
 
 | User	| Score	|
