@@ -64,7 +64,15 @@ class Console
  * @param Board 	Nombre d'allumettes restantes sur la ligne i.
  */
 	public static void ShowBoard(int[] Board)
-	{}
+	{
+		int 	nbBlanks;
+		int 	i;
+		char [] mesEspaces;
+
+		mesEspaces = new char [40 - board.length() / 2];
+		Arrays.fill(mesEspaces, ' ');
+		System.out.println(texte + new String(mesEspaces);
+	}
 /**
  * Affiche un message indiquant au joueur que son coup est invalide.
  * @param move Dernier coup jouer.
