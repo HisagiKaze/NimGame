@@ -1,18 +1,18 @@
 class Console
 {
 /**
-	* Demande au joueur de saisir le nombre de lignes du plateau 
-	* et retourne cet entier.
-	*/
+ * Demande au joueur de saisir le nombre de lignes du plateau 
+ * et retourne cet entier.
+ */
 	public static int getSize()
 	{}
 
 /**
-	* Demande au joueur de saisir un coup sous la forme ’m n’ ou ’m’ 
-	* est la ligne et ’n’ est le nombre d’allumettes.
-	* @param name	Nom du joueur courrant
-	* @return Move 	Renvoie le coup jouer par le joueur
-	*/
+ * Demande au joueur de saisir un coup sous la forme ’m n’ ou ’m’ 
+ * est la ligne et ’n’ est le nombre d’allumettes.
+ * @param name	Nom du joueur courrant
+ * @return Move 	Renvoie le coup jouer par le joueur
+ */
 	public static Move getMove(String name)
 	{}
 
