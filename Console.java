@@ -54,7 +54,7 @@ class Console
 			}
 		} while (btest == false)
 		sc.reset();
-		Move.setLine(line);
+		Move.setLine(line - 1);
 		Move.setMatch(match);
 	}
 
@@ -71,7 +71,9 @@ class Console
  */
 	public static void invalidMove(Move move)
 	{
-		if ()
+		System.out.println("Le dernier coup est impossible :");
+		System.out.println("Ligne du coup / Nombre de ligne maximum : " + (move.getLine + 1) + "/" + board.length);
+		System.out.println("Nombre d'allumettes detruites / restantes : " + move.getMatch + "/" + board[move.getLine - 1]);
 	}
 
 /**
