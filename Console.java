@@ -12,7 +12,7 @@ class Console
 	{
 		int 	nb;
 
-		nb = InputMismatchException(sc);
+		nb = InputMismatchException();
 		return (nb);
 	}
 
@@ -28,6 +28,7 @@ class Console
 		Scanner 		sc;
 		StringTokenizer	st;
 		boolean			btest;
+		Move 			currentMove;
 		int 			line;
 		int 			match;
 
@@ -54,8 +55,7 @@ class Console
 			}
 		} while (btest == false)
 		sc.reset();
-		Move.setLine(line - 1);
-		Move.setMatch(match);
+		return (currentMove = new Move((line - 1), match));
 	}
 
 /**
@@ -63,16 +63,8 @@ class Console
  * board[i] est le nombre d’allumettes restantes de la ligne i.
  * @param Board 	Nombre d'allumettes restantes sur la ligne i.
  */
-	public static void ShowBoard(int[] Board) //J'ai un debut de piste ... A voir.
-	{
-		int 	nbBlanks;
-		int 	i;
-		char [] mesEspaces;
-
-		mesEspaces = new char [40 - board.length() / 2];
-		Arrays.fill(mesEspaces, ' ');
-		System.out.println(texte + new String(mesEspaces);
-	}
+	public static void ShowBoard(int[] Board)
+	{}
 /**
  * Affiche un message indiquant au joueur que son coup est invalide.
  * @param move Dernier coup jouer.
@@ -110,8 +102,8 @@ class Console
 	static int InputMismatchException () {
 
 		int		x;
-		boolean btest;
-		Scanner sc;
+		boolean	btest;
+		Scanner	sc;
 
 		x = 0;
 		btest = false;
