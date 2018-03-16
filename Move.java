@@ -4,6 +4,27 @@ class Move
 	private int	match_nb;
 
 /**
+ * Constructeur par defaut de l'objet Move.
+ * (set both int to -1)
+ */
+	public static void Move()
+	{
+		this.line = -1;
+		this.match_nb = -1;
+	}
+
+/**
+ * Constructeur avec parametre de l'objet Move.
+ * @param line     numero de la ligne du coup joue.
+ * @param match_nb Nombre d'allumettes a supprimer.
+ */
+	public static void Move(int line, int match_nb)
+	{
+		this.line = line;
+		this.match_nb = match_nb;
+	}
+
+/**
  * Indique la ligne où est joué le coup.
  * @param x Numero de la ligne.
  */
