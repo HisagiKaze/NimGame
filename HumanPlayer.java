@@ -6,20 +6,19 @@ class HumanPlayer
 /**
  * Constructeur par defaut.
  */
-	public HumanPlayer()
+	public static void HumanPlayer()
 	{
 		this.name = null;
 		this.nbWins = 0;
 	}
 
 /**
- * Constructeur par avec name.
- * @param name [nom du joueur.
+ * Constructeur avec parametre.
+ * @param name Nom du joueur.
  */
-	public HumanPlayer(String name)
+	public static void HumanPlayer(String name)
 	{
 		this.name = name;
-		this.nbWins = 0;
 	}
 
 /**
@@ -40,6 +39,15 @@ class HumanPlayer
 	}
 
 /**
+ * Renvoie le nom du joueur.
+ * @return nom du joueur.
+ */
+	public static String getName()
+	{
+		return (this.name);
+	}
+
+/**
  * Renvoie le nombre de victoire du joueur.
  * @return nombre de victoire.
  */
@@ -47,4 +55,5 @@ class HumanPlayer
 	{
 		return (this.nbWins);
 	}
+>>>>>>> 4694c3eebb53965860550beba09ccd7b62aa0fe8
 }
