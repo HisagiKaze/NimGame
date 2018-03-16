@@ -1,6 +1,10 @@
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
+/**
+ * Gére l'affichage et la saisie
+ * @author  Cédric et Paul-Aurian
+ */
 class Console
 {
 /**
@@ -14,6 +18,13 @@ class Console
 
 		nb = InputMismatchException();
 		return (nb);
+	}
+
+	public static HumanPlayer getName()
+	{
+		HumanPlayer [] players;
+
+		players = new HumanPlayer [2] ();
 	}
 
 /**
@@ -64,7 +75,37 @@ class Console
  * @param Board 	Nombre d'allumettes restantes sur la ligne i.
  */
 	public static void ShowBoard(int[] Board)
-	{}
+	{
+		int i;
+	    int j;
+	    int size;
+	    int pos;
+	    int space;
+
+	    i = 0;
+	    j = 1;
+	    size = this.getsize();
+	    pos = 0;
+	    while(i < size)
+	    {
+			space = 0;
+			while(space++ < ((size - 1) - i))
+		    	System.out.print(" ");
+		    space = 0;
+			while(space++ < (i + j))
+			{
+		    	if(Board[pos] == 1)
+					System.out.print("|");
+		    	else
+					System.out.print(" ");
+		    	if(pos < Board.length - 1)
+					pos ++;
+			}
+			System.out.print("\n");
+			j++;
+			i++;
+	    }    
+	}
 /**
  * Affiche un message indiquant au joueur que son coup est invalide.
  * @param move Dernier coup jouer.
