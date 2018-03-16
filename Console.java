@@ -63,7 +63,7 @@ class Console
  * board[i] est le nombre d’allumettes restantes de la ligne i.
  * @param Board 	Nombre d'allumettes restantes sur la ligne i.
  */
-	public static void ShowBoard(int[] Board)
+	public static void ShowBoard(int[] Board) //J'ai un debut de piste ... A voir.
 	{
 		int 	nbBlanks;
 		int 	i;
