@@ -55,5 +55,4 @@ class HumanPlayer
 	{
 		return (this.nbWins);
 	}
->>>>>>> 4694c3eebb53965860550beba09ccd7b62aa0fe8
 }
