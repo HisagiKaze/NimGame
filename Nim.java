@@ -7,12 +7,12 @@ class Nim
 {
 	public static void main(String[] args) 
 	{
-		HumanPlayer []	player;
+		HumanPlayer		currentPlayer;
 		Board			table;
 		int				i;
 
 		Console.script(0);
-		player = Console.getName();
+		currentPlayer = Console.getName();
 		Console.script(1);
 		table = new Board();
 		Console.clear_term();
@@ -21,10 +21,8 @@ class Nim
 		{
 			Console.script(2);
 			Console.ShowBoard(table.getBoard());
-			if (i > 1)
-				i = 0;
-			if (table.setBoard(Console.getMove(player[i++].getName())) == false)
-				i--;
+			if (table.setBoard(Console.getMove(currentPlayer.getName())))
+				currentPlayer = currentPlayer.getNext();
 		}
 	}
 }

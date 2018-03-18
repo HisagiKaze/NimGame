@@ -24,18 +24,18 @@ class Console
  * Recupere le nom des joueurs.
  * @return Un tableau de deux joueurs.
  */
-	public static HumanPlayer [] getName()
+	public static HumanPlayer getName()
 	{
 		Scanner		sc;
-		HumanPlayer [] player;
-		int 		i;
+		HumanPlayer player1;
+		HumanPlayer player2;
 
 		sc = new Scanner(System.in);
-		i = 0;
-		player = new HumanPlayer [2];
-		while (i < player.length - 1)
-			player[i++]= new HumanPlayer(sc.next());
-		return (player);
+		player1 = new HumanPlayer(sc.next());
+		player2 = new HumanPlayer(sc.next());
+		player1.setNext(player2);
+		player2.setNext(player1);
+		return (player1);
 	}
 
 /**
@@ -111,7 +111,7 @@ class Console
 		    	else
 					System.out.print(" ");
 		    	if(pos < board.length - 1)
-					pos ++;
+					pos++;
 			}
 			System.out.print("\n");
 			j++;
@@ -122,7 +122,7 @@ class Console
  * Affiche un message indiquant au joueur que son coup est invalide.
  * @param move Dernier coup jouer.
  */
-	public void invalidMove(Move move)
+	public static void invalidMove(Move move)
 	{
 		System.out.println("Le dernier coup est impossible :");
 		System.out.println("Ligne du coup / Nombre de ligne maximum : " + (move.getLine() + 1) + "/" + Board.getBoard().length);

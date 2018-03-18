@@ -13,7 +13,7 @@ class GameState
 		this.nbMove = 0;
 	}
 
-	public static void setState(boolean state)
+	public void setState(boolean state)
 	{
 		this.state = state;
 	}
