@@ -1,5 +1,5 @@
 /**
- * Inteligence artificielle
+ * Inteligence artificielle aleatoire
  * @author N'GONDO Cédric
  **/
 class IA_naive
@@ -11,9 +11,9 @@ class IA_naive
      * Contructeur IA_naive
      * @init le nom et le nombre de partie gagnée
      */
-    public IA_naive( int w)
+    public IA_naive(int w)
     {
-    	this.name = "Bot_1";
+    	this.name = "Bot";
     	this.nbWin = w++;
     }
 
@@ -51,19 +51,38 @@ class IA_naive
      * @param size indique le nombre max de ligne
      * @return le numéro de la ligne et le nombre de d'allumette
      */
-    public static int[] ia_Choice(int size)
+    public Move ia_Choice(int [] board])
     {
-    	int [] tab;
-    	int i;
+    	Move   move;
+    	int    i;
 
-    	tab = new int [2];
-    	i = 0;
-    	while(i < tab.length - 1)
-    	{
-    	    tab[i++] = ((int)(Math.random() * (size - 1) - 0)*(size - 1));
-    	    tab[i++] = ((int)(Math.random() * 3 - 1) * 3);
-    	}
-    	return (tab);
+        i = 0;
+    	while (i == 0)
+        {
+            move = new Move((int)Math.random() * (board.length()), (int)Math.random() * (4 - 1) + 1);
+            if (setBoard(move) == false)
+                ia_Choice(board);
+        }
+    	return (move);
+    }
+
+/**
+ * Verifie si le move est valide, et si oui, il l'effectue.
+ * Sinon il utilise Console.invalidMove(move).
+ * @param  move Un coup possedant une ligne et un nombre d'allumettes.
+ * @return      Vrai si le move a été effectué, faux sinon.
+ */
+    public boolean setBoard(Move move)
+    {
+        if (this.board[move.getLine()] >= move.getMatchNb())
+        {
+            this.board[move.getLine()] = this.board[move.getLine()] - move.getMatchNb();
+            this.nbMatchLeft = this.nbMatchLeft - move.getMatchNb();
+            return (true);
+        }
+        else
+            Console.invalidMove(move);
+        return (false);
     }
 
     /**
