@@ -1,3 +1,6 @@
+/**
+ * Status of the game
+ */
 class GameState
 {
 	private	boolean			state;
@@ -13,8 +16,29 @@ class GameState
 		this.nbMove = 0;
 	}
 
+/**
+ * Mutateur de l'etat du jeu.
+ * @param state [Nouvel etat booeen du jeu]
+ */
 	public void setState(boolean state)
 	{
 		this.state = state;
+	}
+
+/**
+ * Mutateur du nombre de coups joues
+ * Incremente le nombre a chaque appel.
+ */
+	public void setNbMove()
+	{
+		this.nbMove++;
+	}
+
+/**
+ * Accesseur du nombre de coups joues.
+ */
+	public void getNbMove()
+	{
+		return (this.nbMove);
 	}
 }
