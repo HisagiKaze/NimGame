@@ -6,7 +6,7 @@ class HumanPlayer
 /**
  * Constructeur par defaut.
  */
-	public static void HumanPlayer()
+	public void HumanPlayer()
 	{
 		this.name = null;
 		this.nbWins = 0;
@@ -16,7 +16,7 @@ class HumanPlayer
  * Constructeur avec parametre.
  * @param name Nom du joueur.
  */
-	public static void HumanPlayer(String name)
+	public void HumanPlayer(String name)
 	{
 		this.name = name;
 	}
@@ -25,7 +25,7 @@ class HumanPlayer
  * Redefinir le nom du joueur.
  * @param name Nouveau nom du joueur.
  */
-	public static void setName(String name)
+	public void setName(String name)
 	{
 		this.name = name;
 	}
@@ -33,7 +33,7 @@ class HumanPlayer
 /**
  * Incrementer le nombre de victoire du joueur.
  */
-	public static void setNbWins()
+	public void setNbWins()
 	{
 		this.nbWins++;
 	}
@@ -42,7 +42,7 @@ class HumanPlayer
  * Renvoie le nom du joueur.
  * @return nom du joueur.
  */
-	public static String getName()
+	public String getName()
 	{
 		return (this.name);
 	}
@@ -51,7 +51,7 @@ class HumanPlayer
  * Renvoie le nombre de victoire du joueur.
  * @return nombre de victoire.
  */
-	public static int getNbWins()
+	public int getNbWins()
 	{
 		return (this.nbWins);
 	}

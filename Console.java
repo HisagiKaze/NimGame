@@ -14,10 +14,10 @@ class Console
  */
 	public static int getSize()
 	{
-		int 	nb;
+		int 	boardSize;
 
-		nb = InputMismatchException();
-		return (nb);
+		boardSize = InputMismatchException();
+		return (boardSize);
 	}
 
 /**
@@ -27,13 +27,14 @@ class Console
 	public static HumanPlayer [] getName()
 	{
 		Scanner		sc;
-		HumanPlayer [2] player;
+		HumanPlayer [] player;
 		int 		i;
 
 		sc = new Scanner(System.in);
 		i = 0;
+		player = new HumanPlayer [2];
 		while (i < player.length - 1)
-			player[i++] = new HumanPlayer(sc.nextLien());
+			player[i++]= new HumanPlayer(sc.next());
 		return (player);
 	}
 
@@ -74,7 +75,7 @@ class Console
 				btest = false;
 				String purge = sc.next();
 			}
-		} while (btest == false)
+		} while (btest == false);
 		sc.reset();
 		return (currentMove = new Move((line - 1), match));
 	}
@@ -85,7 +86,7 @@ class Console
  * @author Cedric
  * @param Board 	Nombre d'allumettes restantes sur la ligne i.
  */
-	public static void ShowBoard(int[] Board)
+	public static void ShowBoard(int[] board)
 	{
 		int i;
 	    int j;
@@ -95,7 +96,7 @@ class Console
 
 	    i = 0;
 	    j = 1;
-	    size = this.getsize();
+	    size = board.length;
 	    pos = 0;
 	    while(i < size)
 	    {
@@ -105,11 +106,11 @@ class Console
 		    space = 0;
 			while(space++ < (i + j))
 			{
-		    	if(Board[pos] == 1)
+		    	if(board[pos] == 1)
 					System.out.print("|");
 		    	else
 					System.out.print(" ");
-		    	if(pos < Board.length - 1)
+		    	if(pos < board.length - 1)
 					pos ++;
 			}
 			System.out.print("\n");
@@ -121,11 +122,11 @@ class Console
  * Affiche un message indiquant au joueur que son coup est invalide.
  * @param move Dernier coup jouer.
  */
-	public static void invalidMove(Move move)
+	public void invalidMove(Move move)
 	{
 		System.out.println("Le dernier coup est impossible :");
-		System.out.println("Ligne du coup / Nombre de ligne maximum : " + (move.getLine + 1) + "/" + board.length);
-		System.out.println("Nombre d'allumettes detruites / restantes : " + move.getMatch + "/" + board[move.getLine - 1]);
+		System.out.println("Ligne du coup / Nombre de ligne maximum : " + (move.getLine() + 1) + "/" + Board.getBoard().length);
+		System.out.println("Nombre d'allumettes detruites / restantes : " + move.getMatchNb() + "/" + Board.getBoard()[Move.getLine() - 1]);
 	}
 
 /**
@@ -185,7 +186,7 @@ class Console
  */
 	public static void script(int i)
 	{
-		if (i = 0)
+		if (i == 0)
 		{
 			System.out.println("Bonjour et bienvenue dans le jeu du Nim");
 			System.out.println("Merci d'entrer le nom des deux joueurs :");

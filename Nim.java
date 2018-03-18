@@ -11,14 +11,15 @@ class Nim
 		Console.script(1);
 		table = new Board();
 		Console.clear_term();
-		Console.script(2);
-		Console.ShowBoard(table.board);
 		i = 0;
-		while (table.nbMatchLeft > 1)
+		while (table.getNbMatch() > 1)
 		{
+			Console.script(2);
+			Console.ShowBoard(table.getBoard());
 			if (i > 1)
 				i = 0;
-			Console.getMove(player[i++])
+			if (table.setBoard(Console.getMove(player[i++].getName())) == false)
+				i--;
 		}
 	}
 }

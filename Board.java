@@ -29,12 +29,12 @@ class Board
  * @param  move Un coup possedant une ligne et un nombre d'allumettes.
  * @return      Vrai si le move a été effectué, faux sinon.
  */
-	public static boolean setBoard(Move move)
+	public boolean setBoard(Move move)
 	{
-		if (this.board[move.line] >= move.match_nb)
+		if (this.board[move.getLine()] >= move.getMatchNb())
 		{
-			this.board[move.line] = this.board[move.line] - move.match_nb;
-			this.nbMatchLeft = this.nbMatchLeft - move.match_nb;
+			this.board[move.getLine()] = this.board[move.getLine()] - move.getMatchNb();
+			this.nbMatchLeft = this.nbMatchLeft - move.getMatchNb();
 			return (true);
 		}
 		else
@@ -46,7 +46,7 @@ class Board
  * Renvoie le tableau d'allumettes
  * @return Tableau d'allumettes
  */
-	public static int [] getBoard()
+	public int [] getBoard()
 	{
 		return (this.board);
 	}
@@ -55,7 +55,7 @@ class Board
  * Renvoie le nombre d'allumettes restantes sur le plateau.
  * @return Nombre d'allumettes restantes.
  */
-	public static int getNbMatch()
+	public int getNbMatch()
 	{
 		return (this.nbMatchLeft);
 	}
