@@ -82,6 +82,7 @@ class Console
 /**
  * Affiche le plateau represente par le tableau d’entiers board où 
  * board[i] est le nombre d’allumettes restantes de la ligne i.
+ * @author Cedric
  * @param Board 	Nombre d'allumettes restantes sur la ligne i.
  */
 	public static void ShowBoard(int[] Board)
@@ -182,7 +183,7 @@ class Console
  * Ecrit sur le script de jeu sur la console.
  * @param i represente les differentes etapes du jeu.
  */
-	public static void greetings(int i)
+	public static void script(int i)
 	{
 		if (i = 0)
 		{
@@ -191,6 +192,8 @@ class Console
 		}
 		else if (i == 1)
 			System.out.println("Merci. Maintenant veuillez entrer la taille de plateau souhaitee : ");
-
+		else if (i == 2)
+			System.out.println("Voici donc votre plateau de jeu :");
+		//else if (i == 3)
 	}
 }
