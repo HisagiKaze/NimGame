@@ -37,7 +37,7 @@ class GameState
 /**
  * Accesseur du nombre de coups joues.
  */
-	public void getNbMove()
+	public int getNbMove()
 	{
 		return (this.nbMove);
 	}
