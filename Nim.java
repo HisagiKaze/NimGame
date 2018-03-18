@@ -1,3 +1,8 @@
+/**
+ * Appelle une a une toutes les fonctions pour jouer au Nim.
+ * @author Paul-Aurian
+ * @version 3.1 Human VS Human
+ */
 class Nim
 {
 	public static void main(String[] args) 
