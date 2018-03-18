@@ -2,11 +2,23 @@ class Nim
 {
 	public static void main(String[] args) 
 	{
-		HumanPlayer [] player;
+		HumanPlayer []	player;
+		Board			table;
+		int				i;
 
-		System.out.println("Bonjour et bienvenue dans le jeu du Nim");
-		System.out.println("Merci d'entrer le nom des deux joueurs :");
+		Console.script(0);
 		player = Console.getName();
-		System.out.println("");
+		Console.script(1);
+		table = new Board();
+		Console.clear_term();
+		Console.script(2);
+		Console.ShowBoard(table.board);
+		i = 0;
+		while (table.nbMatchLeft > 1)
+		{
+			if (i > 1)
+				i = 0;
+			Console.getMove(player[i++])
+		}
 	}
 }
