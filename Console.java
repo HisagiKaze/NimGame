@@ -63,6 +63,8 @@ class Console
 		sc = new Scanner(System.in);
 		st = new StringTokenizer(sc.next(), " ");
 		btest = false;
+		line = -1;
+		match = -1;
 		do 
 		{
 			try 
@@ -127,8 +129,8 @@ class Console
 	public static void invalidMove(Move move)
 	{
 		System.out.println("Le dernier coup est impossible :");
-		System.out.println("Ligne du coup / Nombre de ligne maximum : " + (move.getLine() + 1) + "/" + Board.getBoard().length);
-		System.out.println("Nombre d'allumettes detruites / restantes : " + move.getMatchNb() + "/" + Board.getBoard()[Move.getLine() - 1]);
+		//System.out.println("Ligne du coup / Nombre de ligne maximum : " + (move.getLine() + 1) + "/" + Board.getBoard().length);
+		//System.out.println("Nombre d'allumettes detruites / restantes : " + move.getMatchNb() + "/" + Board.getBoard()[Move.getLine() - 1]);
 	}
 
 /**
