@@ -1,3 +1,11 @@
+/**
+ * Objet HumanPlayer
+ * name : Nom du joueur
+ * nbWins : Nombre de victoire du joueur
+ * next : Le joueur suivant
+ *
+ * @author Paul-Aurian
+ */
 class HumanPlayer
 {
 	private	String		name;
