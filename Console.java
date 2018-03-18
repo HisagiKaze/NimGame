@@ -20,11 +20,21 @@ class Console
 		return (nb);
 	}
 
-	public static HumanPlayer getName()
+/**
+ * Recupere le nom des joueurs.
+ * @return Un tableau de deux joueurs.
+ */
+	public static HumanPlayer [] getName()
 	{
-		HumanPlayer [] players;
+		Scanner		sc;
+		HumanPlayer [2] player;
+		int 		i;
 
-		players = new HumanPlayer [2] ();
+		sc = new Scanner(System.in);
+		i = 0;
+		while (i < player.length - 1)
+			player[i++] = new HumanPlayer(sc.nextLien());
+		return (player);
 	}
 
 /**
@@ -166,5 +176,21 @@ class Console
 		} while (btest == false);
 		sc.reset();
 		return (x);
+	}
+
+/**
+ * Ecrit sur le script de jeu sur la console.
+ * @param i represente les differentes etapes du jeu.
+ */
+	public static void greetings(int i)
+	{
+		if (i = 0)
+		{
+			System.out.println("Bonjour et bienvenue dans le jeu du Nim");
+			System.out.println("Merci d'entrer le nom des deux joueurs :");
+		}
+		else if (i == 1)
+			System.out.println("Merci. Maintenant veuillez entrer la taille de plateau souhaitee : ");
+
 	}
 }
