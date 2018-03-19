@@ -110,7 +110,7 @@ class Console
 		    space = 0;
 			while(space++ < (i + j))
 			{
-		    	if(board[pos] == 1)
+		    	if(board[pos] > 0)
 					System.out.print("|");
 		    	else
 					System.out.print(" ");
