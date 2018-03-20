@@ -90,38 +90,36 @@ class Console
  * @author Cedric
  * @param Board 	Nombre d'allumettes restantes sur la ligne i.
  */
-	public static void ShowBoard(int[] board)
-	{
-		int i;
+	public static void ShowBoard(int[] Board)
+    {
+	    int i;
 	    int j;
 	    int size;
-	    int pos;
 	    int space;
+	    int pos;
+	    int compt;
 
 	    i = 0;
 	    j = 1;
-	    size = board.length;
+	    size = Board.length - 1;
 	    pos = 0;
+	    compt = 0;
 	    while(i < size)
 	    {
-			space = 0;
-			while(space++ < ((size - 1) - i))
-		    	System.out.print(" ");
-		    space = 0;
-			while(space++ < (i + j))
-			{
-		    	if(board[pos] > 0)
-					System.out.print("|");
-		    	else
-					System.out.print(" ");
-		    	if(pos < board.length - 1)
-					pos++;
-			}
-			System.out.print("\n");
-			j++;
-			i++;
-	    }    
-	}
+		space = 0;
+		while(space++ < (size + 1 - i))
+		    System.out.print(" ");
+		compt = 0;
+		while(compt++ < Board[pos])
+		{
+		    System.out.print("|");
+		}
+		pos++;
+		System.out.print("\n");
+		j++;
+		i++;
+	    }
+    }
 /**
  * Affiche un message indiquant au joueur que son coup est invalide.
  * @param move Dernier coup jouer.
