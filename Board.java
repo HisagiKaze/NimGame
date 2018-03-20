@@ -17,9 +17,9 @@ class Board
 
 		size = Console.getSize();
 		this.board = new int [size];
-		i = 0;
-		while (i < this.board.length - 1)
-			this.board[i++] = 2 * i + 1;
+		i = -1;
+		while (i++ < this.board.length - 1)
+		    this.board[i] = 2 * i + 1;
 		this.nbMatchLeft = (size * size);
 	}
 

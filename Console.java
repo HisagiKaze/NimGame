@@ -88,16 +88,12 @@ class Console
 	public static void ShowBoard(int[] board)
     {
 	    int i;
-	    int j;
 	    int size;
 	    int space;
-	    int pos;
 	    int compt;
 
 	    i = 0;
-	    j = 1;
 	    size = board.length - 1;
-	    pos = 0;
 	    compt = 0;
 	    while(i < size)
 	    {
@@ -105,13 +101,12 @@ class Console
 			while(space++ < (size + 1 - i))
 			    System.out.print(" ");
 			compt = 0;
-			while(compt++ < board[pos])
+			while(compt < board[i])
 			{
 			    System.out.print("|");
+			    compt++;
 			}
-			pos++;
 			System.out.print("\n");
-			j++;
 			i++;
 	    }
     }
