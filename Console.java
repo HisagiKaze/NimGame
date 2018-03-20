@@ -30,10 +30,8 @@ class Console
 		HumanPlayer player2;
 
 		sc = new Scanner(System.in);
-		player1 = new HumanPlayer();
-		player2 = new HumanPlayer();
-		player1.setName(sc.next());
-		player2.setName(sc.next());
+		player1 = new HumanPlayer(sc.next());
+		player2 = new HumanPlayer(sc.next());
 		player1.setNext(player2);
 		player2.setNext(player1);
 		return (player1);

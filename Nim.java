@@ -15,14 +15,15 @@ class Nim
 		currentPlayer = Console.getName();
 		Console.script(1);
 		table = new Board();
-		Console.clear_term();
 		i = 0;
+		Console.clear_term();
 		while (table.getNbMatch() > 1)
 		{
 			Console.script(2);
 			Console.ShowBoard(table.getBoard());
 			if (table.setBoard(Console.getMove(currentPlayer.getName())))
 				currentPlayer = currentPlayer.getNext();
+			Console.clear_term();
 		}
 	}
 }

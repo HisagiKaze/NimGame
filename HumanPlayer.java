@@ -16,7 +16,7 @@ class HumanPlayer
  * Constructeur avec parametre.
  * @param name Nom du joueur.
  */
-	public void HumanPlayer(String name)
+	public HumanPlayer(String name)
 	{
 		this.name = name;
 		this.nbWins = 0;
