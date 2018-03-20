@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.StringTokenizer;
 
 /**
  * Gére l'affichage et la saisie
@@ -50,7 +49,6 @@ class Console
 	public static Move getMove(String name)
 	{
 		Scanner 		sc;
-		StringTokenizer	st;
 		boolean			btest;
 		Move 			currentMove;
 		int 			line;
@@ -61,7 +59,6 @@ class Console
 		System.out.println("\'m\' est la ligne et \'n\' est le nombre d'allumettes.");
 
 		sc = new Scanner(System.in);
-		st = new StringTokenizer(sc.next(), " ");
 		btest = false;
 		line = -1;
 		match = -1;
@@ -69,8 +66,8 @@ class Console
 		{
 			try 
 			{
-				line = Integer.parseInt(st.nextToken());
-				match = Integer.parseInt(st.nextToken());
+				line = sc.nextInt();
+				match = sc.nextInt();
 				btest = true;
 			}
 			catch (java.util.InputMismatchException e)
@@ -90,7 +87,7 @@ class Console
  * @author Cedric
  * @param Board 	Nombre d'allumettes restantes sur la ligne i.
  */
-	public static void ShowBoard(int[] Board)
+	public static void ShowBoard(int[] board)
     {
 	    int i;
 	    int j;
@@ -101,23 +98,23 @@ class Console
 
 	    i = 0;
 	    j = 1;
-	    size = Board.length - 1;
+	    size = board.length - 1;
 	    pos = 0;
 	    compt = 0;
 	    while(i < size)
 	    {
-		space = 0;
-		while(space++ < (size + 1 - i))
-		    System.out.print(" ");
-		compt = 0;
-		while(compt++ < Board[pos])
-		{
-		    System.out.print("|");
-		}
-		pos++;
-		System.out.print("\n");
-		j++;
-		i++;
+			space = 0;
+			while(space++ < (size + 1 - i))
+			    System.out.print(" ");
+			compt = 0;
+			while(compt++ < board[pos])
+			{
+			    System.out.print("|");
+			}
+			pos++;
+			System.out.print("\n");
+			j++;
+			i++;
 	    }
     }
 /**
