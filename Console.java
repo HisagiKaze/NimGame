@@ -189,4 +189,13 @@ class Console
 			System.out.println("Voici donc votre plateau de jeu :");
 		//else if (i == 3)
 	}
+
+/**
+ * Affiche le nombre de coup jouer dans la partie en cours
+ * @param i INTEGER GameState.nbMove
+ */
+	public static void nbMovePlayed(int i)
+	{
+		System.out.println("Nombre de coups joués dans cette partie : " + i);
+	}
 }

@@ -10,7 +10,7 @@ class GameState
 	 * Initialise un nouveau jeu.
 	 * @param  nbLine int renvoyé par console.getsize()
 	 */
-	public GameState(int nbLine)
+	public GameState()
 	{
 		this.state = true;
 		this.nbMove = 0;

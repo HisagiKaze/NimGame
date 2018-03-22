@@ -31,17 +31,16 @@ class Board
  */
 	public boolean setBoard(Move move)
 	{
-		if (this.board[move.getLine()] >= move.getMatchNb())
+		if ((move.getLine() <= (this.board.length - 1)  && move.getLine() >= 0) && (move.getMatchNb() >= 1 && move.getMatchNb() <= 3))
 		{
-			if((move.getLine() > this.board.length) && (move.getMatchNb() >= 1 && move.getMatchNb() <= 3))
+			if(this.board[move.getLine()] >= move.getMatchNb())
 			{
 				this.board[move.getLine()] = this.board[move.getLine()] - move.getMatchNb();
 				this.nbMatchLeft = this.nbMatchLeft - move.getMatchNb();
+				return (true);
 			}
-			return (true);
 		}
-		else
-			Console.invalidMove(move);
+		Console.invalidMove(move);
 		return (false);
 	}
 
@@ -58,7 +57,7 @@ class Board
  * Renvoie le nombre d'allumettes restantes sur le plateau.
  * @return Nombre d'allumettes restantes.
  */
-	public int getNbMatch()
+	public int getNbMatchLeft()
 	{
 		return (this.nbMatchLeft);
 	}
