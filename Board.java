@@ -33,7 +33,7 @@ class Board
 	{
 		if (this.board[move.getLine()] >= move.getMatchNb())
 		{
-			if((move.getLine() > this.board.length) && (move.getNbMatch >= 1 && move.getNbMatch <= 3))
+			if((move.getLine() > this.board.length) && (move.getMatchNb() >= 1 && move.getMatchNb() <= 3))
 			{
 				this.board[move.getLine()] = this.board[move.getLine()] - move.getMatchNb();
 				this.nbMatchLeft = this.nbMatchLeft - move.getMatchNb();
