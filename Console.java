@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.StringTokenizer;
 
 /**
  * Gére l'affichage et la saisie
@@ -24,18 +23,18 @@ class Console
  * Recupere le nom des joueurs.
  * @return Un tableau de deux joueurs.
  */
-	public static HumanPlayer [] getName()
+	public static HumanPlayer getName()
 	{
 		Scanner		sc;
-		HumanPlayer [] player;
-		int 		i;
+		HumanPlayer player1;
+		HumanPlayer player2;
 
 		sc = new Scanner(System.in);
-		i = 0;
-		player = new HumanPlayer [2];
-		while (i < player.length - 1)
-			player[i++]= new HumanPlayer(sc.next());
-		return (player);
+		player1 = new HumanPlayer(sc.next());
+		player2 = new HumanPlayer(sc.next());
+		player1.setNext(player2);
+		player2.setNext(player1);
+		return (player1);
 	}
 
 /**
@@ -48,7 +47,6 @@ class Console
 	public static Move getMove(String name)
 	{
 		Scanner 		sc;
-		StringTokenizer	st;
 		boolean			btest;
 		Move 			currentMove;
 		int 			line;
@@ -59,14 +57,15 @@ class Console
 		System.out.println("\'m\' est la ligne et \'n\' est le nombre d'allumettes.");
 
 		sc = new Scanner(System.in);
-		st = new StringTokenizer(sc.next(), " ");
 		btest = false;
+		line = -1;
+		match = -1;
 		do 
 		{
 			try 
 			{
-				line = Integer.parseInt(st.nextToken());
-				match = Integer.parseInt(st.nextToken());
+				line = sc.nextInt();
+				match = sc.nextInt();
 				btest = true;
 			}
 			catch (java.util.InputMismatchException e)
@@ -87,46 +86,39 @@ class Console
  * @param Board 	Nombre d'allumettes restantes sur la ligne i.
  */
 	public static void ShowBoard(int[] board)
-	{
-		int i;
-	    int j;
+    {
+	    int i;
 	    int size;
-	    int pos;
 	    int space;
+	    int compt;
 
 	    i = 0;
-	    j = 1;
-	    size = board.length;
-	    pos = 0;
-	    while(i < size)
+	    size = board.length - 1;
+	    compt = 0;
+	    while(i < size + 1)
 	    {
 			space = 0;
-			while(space++ < ((size - 1) - i))
-		    	System.out.print(" ");
-		    space = 0;
-			while(space++ < (i + j))
+			while(space++ < (size + 1 - i))
+			    System.out.print(" ");
+			compt = 0;
+			while(compt < board[i])
 			{
-		    	if(board[pos] == 1)
-					System.out.print("|");
-		    	else
-					System.out.print(" ");
-		    	if(pos < board.length - 1)
-					pos ++;
+			    System.out.print("|");
+			    compt++;
 			}
 			System.out.print("\n");
-			j++;
 			i++;
-	    }    
-	}
+	    }
+    }
 /**
  * Affiche un message indiquant au joueur que son coup est invalide.
  * @param move Dernier coup jouer.
  */
-	public void invalidMove(Move move)
+	public static void invalidMove(Move move)
 	{
 		System.out.println("Le dernier coup est impossible :");
-		System.out.println("Ligne du coup / Nombre de ligne maximum : " + (move.getLine() + 1) + "/" + Board.getBoard().length);
-		System.out.println("Nombre d'allumettes detruites / restantes : " + move.getMatchNb() + "/" + Board.getBoard()[Move.getLine() - 1]);
+		//System.out.println("Ligne du coup / Nombre de ligne maximum : " + (move.getLine() + 1) + "/" + Board.getBoard().length);
+		//System.out.println("Nombre d'allumettes detruites / restantes : " + move.getMatchNb() + "/" + Board.getBoard()[Move.getLine() - 1]);
 	}
 
 /**
@@ -196,5 +188,14 @@ class Console
 		else if (i == 2)
 			System.out.println("Voici donc votre plateau de jeu :");
 		//else if (i == 3)
+	}
+
+/**
+ * Affiche le nombre de coup jouer dans la partie en cours
+ * @param i INTEGER GameState.nbMove
+ */
+	public static void nbMovePlayed(int i)
+	{
+		System.out.println("Nombre de coups joués dans cette partie : " + i);
 	}
 }

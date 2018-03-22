@@ -1,3 +1,6 @@
+/**
+ * Status of the game
+ */
 class GameState
 {
 	private	boolean			state;
@@ -7,14 +10,35 @@ class GameState
 	 * Initialise un nouveau jeu.
 	 * @param  nbLine int renvoyé par console.getsize()
 	 */
-	public GameState(int nbLine)
+	public GameState()
 	{
 		this.state = true;
 		this.nbMove = 0;
 	}
 
-	public static void setState(boolean state)
+/**
+ * Mutateur de l'etat du jeu.
+ * @param state [Nouvel etat booeen du jeu]
+ */
+	public void setState(boolean state)
 	{
 		this.state = state;
+	}
+
+/**
+ * Mutateur du nombre de coups joues
+ * Incremente le nombre a chaque appel.
+ */
+	public void setNbMove()
+	{
+		this.nbMove++;
+	}
+
+/**
+ * Accesseur du nombre de coups joues.
+ */
+	public int getNbMove()
+	{
+		return (this.nbMove);
 	}
 }

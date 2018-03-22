@@ -1,3 +1,9 @@
+/**
+ * Coup d'un joueur
+ * Defini par une ligne et un nombre d'allumette
+ * a detruire.
+ * @author Paul-Aurian
+ */
 class Move
 {
 	private	int	line;

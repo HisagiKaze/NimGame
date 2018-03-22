@@ -17,9 +17,9 @@ class Board
 
 		size = Console.getSize();
 		this.board = new int [size];
-		i = 0;
-		while (i < this.board.length - 1)
-			this.board[i++] = 2 * i + 1;
+		i = -1;
+		while (i++ < this.board.length - 1)
+		    this.board[i] = 2 * i + 1;
 		this.nbMatchLeft = (size * size);
 	}
 
@@ -31,14 +31,16 @@ class Board
  */
 	public boolean setBoard(Move move)
 	{
-		if (this.board[move.getLine()] >= move.getMatchNb())
+		if ((move.getLine() <= (this.board.length - 1)  && move.getLine() >= 0) && (move.getMatchNb() >= 1 && move.getMatchNb() <= 3))
 		{
-			this.board[move.getLine()] = this.board[move.getLine()] - move.getMatchNb();
-			this.nbMatchLeft = this.nbMatchLeft - move.getMatchNb();
-			return (true);
+			if(this.board[move.getLine()] >= move.getMatchNb())
+			{
+				this.board[move.getLine()] = this.board[move.getLine()] - move.getMatchNb();
+				this.nbMatchLeft = this.nbMatchLeft - move.getMatchNb();
+				return (true);
+			}
 		}
-		else
-			Console.invalidMove(move);
+		Console.invalidMove(move);
 		return (false);
 	}
 
@@ -55,7 +57,7 @@ class Board
  * Renvoie le nombre d'allumettes restantes sur le plateau.
  * @return Nombre d'allumettes restantes.
  */
-	public int getNbMatch()
+	public int getNbMatchLeft()
 	{
 		return (this.nbMatchLeft);
 	}

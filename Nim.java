@@ -7,24 +7,34 @@ class Nim
 {
 	public static void main(String[] args) 
 	{
-		HumanPlayer []	player;
+		GameState 		currentGame;
+		HumanPlayer		currentPlayer;
 		Board			table;
 		int				i;
 
+		currentGame = new GameState();
 		Console.script(0);
-		player = Console.getName();
+		currentPlayer = Console.getName();
 		Console.script(1);
 		table = new Board();
-		Console.clear_term();
 		i = 0;
-		while (table.getNbMatch() > 1)
+		Console.clear_term();
+		while (table.getNbMatchLeft() > 1)
 		{
-			Console.script(2);
 			Console.ShowBoard(table.getBoard());
-			if (i > 1)
-				i = 0;
-			if (table.setBoard(Console.getMove(player[i++].getName())) == false)
-				i--;
+			if (table.setBoard(Console.getMove(currentPlayer.getName())))
+			{
+				currentGame.setNbMove();
+				currentPlayer = currentPlayer.getNext();
+			}
+			Console.clear_term();
+			System.out.println("Nombre d'allumettes restantes sur le plateau : " + table.getNbMatchLeft());
 		}
+		if (table.getNbMatchLeft() < 1)
+			Console.showWinner(currentPlayer.getName());
+		else
+			Console.showWinner(currentPlayer.getNext().getName());
+		Console.nbMovePlayed(currentGame.getNbMove());
+		currentGame.setState(false);
 	}
 }
