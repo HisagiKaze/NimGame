@@ -95,7 +95,7 @@ class Console
 	    i = 0;
 	    size = board.length - 1;
 	    compt = 0;
-	    while(i < size)
+	    while(i < size + 1)
 	    {
 			space = 0;
 			while(space++ < (size + 1 - i))
