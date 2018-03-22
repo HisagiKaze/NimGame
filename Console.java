@@ -187,7 +187,6 @@ class Console
 			System.out.println("Merci. Maintenant veuillez entrer la taille de plateau souhaitee : ");
 		else if (i == 2)
 			System.out.println("Voici donc votre plateau de jeu :");
-		//else if (i == 3)
 	}
 
 /**
