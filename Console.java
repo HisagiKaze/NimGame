@@ -142,7 +142,7 @@ class Console
 /**
  * InputMismatchException checks if the user enter 
  * an INTEGER and not something else instead.
- * @return   Forcement un INT
+ * @return   Forcement un INT > 0
  */
 	static int InputMismatchException () {
 
@@ -163,10 +163,12 @@ class Console
 			}
 			catch (java.util.InputMismatchException e) 
 			{
-				System.out.println("Merci d'entrer un chiffre de type Integer.");
+				System.out.println("Merci d'entrer un chiffre de type Integer supérieur à zéro.");
 				btest = false;
 				String purge = sc.next();
 			}
+			if (x <= 0)
+				btest = false;
 		} while (btest == false);
 		sc.reset();
 		return (x);
