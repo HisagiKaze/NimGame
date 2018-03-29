@@ -6,7 +6,6 @@ import java.util.Scanner;
  */
 class Console
 {
-	int 	boardSize;
 /**
  * Demande au joueur de saisir le nombre de lignes du plateau 
  * et retourne cet entier.
@@ -14,6 +13,8 @@ class Console
  */
 	public static int getSize()
 	{
+		int 	boardSize;
+
 		boardSize = InputMismatchException();
 		return (boardSize);
 	}
@@ -122,7 +123,7 @@ class Console
 	public static void invalidMove(Move move)
 	{
 		System.out.println("Le dernier coup est impossible :");
-		System.out.println("Ligne du coup / Nombre de ligne maximum : " + (move.getLine() + 1) + "/" + boardSize);
+		//System.out.println("Ligne du coup / Nombre de ligne maximum : " + (move.getLine() + 1) + "/" + boardSize);
 		//System.out.println("Nombre d'allumettes detruites / restantes : " + move.getMatchNb() + "/" + Board.getBoard()[Move.getLine() - 1]);
 	}
 

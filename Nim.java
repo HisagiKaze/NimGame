@@ -34,7 +34,7 @@ class Nim
 					currentGame.setNbMove();
 					if (table.getNbMatchLeft() > 1)
 					{
-						bIAWin = ArtInte.iaPlays(table.getBoard());
+						bIAWin = artInte.iaPlays(table.getBoard());
 						currentGame.setNbMove();
 					}
 					Console.clear_term();
@@ -50,7 +50,7 @@ class Nim
 			}
 			else
 			{
-				Console.showWinner(player);
+				Console.showWinner(player.getName());
 				player.setNbWins();
 			}
 			Console.nbMovePlayed(currentGame.getNbMove());

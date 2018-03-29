@@ -68,9 +68,9 @@ class IA_naive
      * Mutateur de l'attribut nbWin
      * @param n correspond au nombre de partie gagnée à afficher
      */
-    public void setNbWin(String w)
+    public void setNbWins()
     {
-	   this.name = w;
+	   this.nbWin++;
     }
 
     public static int ligneIa(int [] table)
