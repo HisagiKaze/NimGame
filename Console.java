@@ -157,7 +157,7 @@ class Console
 		{
 			try 
 			{
-				System.out.print("Entrez un nombre : ");
+				System.out.print("Entrez un la taille du plateau : ");
 				x = sc.nextInt();
 				btest = true;
 			}
@@ -196,5 +196,20 @@ class Console
 	public static void nbMovePlayed(int i)
 	{
 		System.out.println("Nombre de coups joués dans cette partie : " + i);
+	}
+
+	public static  boolean askToPlayAgain()
+	{
+		Scanner		sc;
+		String		str;
+
+		System.out.println("Souhaitez-vous rejouer une partie ?\n(Écrivez \"Oui\" ou \"Non\")");
+		sc = new Scanner(System.in);
+		str = sc.next();
+		if (str.compareToIgnoreCase("oui") == 0)
+			return (true);
+		if (str.compareToIgnoreCase("non") == 0)
+			return (false);
+		return (askToPlayAgain());
 	}
 }
