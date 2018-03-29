@@ -23,7 +23,7 @@ class Console
  * Recupere le nom des joueurs.
  * @return Un tableau de deux joueurs.
  */
-	public static HumanPlayer getName()
+	public static HumanPlayer getName(int i)
 	{
 		Scanner		sc;
 		HumanPlayer player1;
@@ -31,9 +31,12 @@ class Console
 
 		sc = new Scanner(System.in);
 		player1 = new HumanPlayer(sc.next());
-		player2 = new HumanPlayer(sc.next());
-		player1.setNext(player2);
-		player2.setNext(player1);
+		if (i == 2)
+		{
+			player2 = new HumanPlayer(sc.next());
+			player1.setNext(player2);
+			player2.setNext(player1);
+		}
 		return (player1);
 	}
 
@@ -142,7 +145,7 @@ class Console
 /**
  * InputMismatchException checks if the user enter 
  * an INTEGER and not something else instead.
- * @return   Forcement un INT
+ * @return   Forcement un INT > 0
  */
 	static int InputMismatchException () {
 
@@ -163,10 +166,12 @@ class Console
 			}
 			catch (java.util.InputMismatchException e) 
 			{
-				System.out.println("Merci d'entrer un chiffre de type Integer.");
+				System.out.println("Merci d'entrer un chiffre de type Integer supérieur à zéro.");
 				btest = false;
 				String purge = sc.next();
 			}
+			if (x < 0)
+				btest = false;
 		} while (btest == false);
 		sc.reset();
 		return (x);
