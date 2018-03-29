@@ -5,6 +5,10 @@
  */
 class Nim
 {
+	/**
+	 * Appelle toutes les fonctions filles du jeu si une IA est demandée
+	 * @param void Le jeu ne requiert aucun parametre argument
+	 */
 	public static void main_IA()
 	{
 		GameState 	currentGame;

@@ -28,18 +28,17 @@ class Console
 	{
 		Scanner		sc;
 		HumanPlayer player1;
-		HumanPlayer player2;
 
 		sc = new Scanner(System.in);
 		player1 = new HumanPlayer(sc.next());
 		if (i == 2)
 		{
+			HumanPlayer player2;
+
 			player2 = new HumanPlayer(sc.next());
 			player1.setNext(player2);
 			player2.setNext(player1);
 		}
-		else
-			player1.setNext(player1);
 		return (player1);
 	}
 
@@ -103,6 +102,7 @@ class Console
 	    compt = 0;
 	    while(i < size + 1)
 	    {
+	    	System.out.print("Ligne " + (i + 1) + " :");
 			space = 0;
 			while(space++ < (size + 1 - i))
 			    System.out.print(" ");
@@ -139,8 +139,8 @@ class Console
 /**
  * Nettoie l'affichage du terminal.
  */
-	public static void clear_term () {
-
+	public static void clear_term () 
+	{
 		System.out.print("\033[H\033[2J");
 		System.out.flush();
 	}
@@ -242,6 +242,6 @@ class Console
 
 		System.out.println("Souhaitez-vous jouer seul ? (Contre une intelligence artificielle");
 		sc = new Scanner(System.in);
-
+		return (sc.next().compareToIgnoreCase("Oui") == 0);
 	}
 }
