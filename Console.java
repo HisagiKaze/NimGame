@@ -20,6 +20,7 @@ class Console
 
 /**
  * Recupere le nom des joueurs.
+ * @param i Nombre de joueur (1 ou 2)
  * @return Un tableau de deux joueurs.
  */
 	public static HumanPlayer getName(int i)
@@ -187,12 +188,14 @@ class Console
 		if (i == 0)
 		{
 			System.out.println("Bonjour et bienvenue dans le jeu du Nim");
-			System.out.println("Merci d'entrer le nom des deux joueurs :");
+			System.out.println("Merci d'entrer le nom du ou des joueurs :");
 		}
 		else if (i == 1)
 			System.out.println("Merci. Maintenant veuillez entrer la taille de plateau souhaitee : ");
 		else if (i == 2)
 			System.out.println("Voici donc votre plateau de jeu :");
+		else if (i == 3)
+			System.out.println("Navré, c'est l'intelligence artificielle qui a gagné !");
 	}
 
 /**
@@ -217,7 +220,7 @@ class Console
  * Demande à l'utilisateur si il souhaite rejouer une partie
  * @return vrai si il souhaite rejouer, faux sinon.
  */
-	public static  boolean askToPlayAgain()
+	public static boolean askToPlayAgain()
 	{
 		Scanner		sc;
 		String		str;
@@ -230,5 +233,14 @@ class Console
 		if (str.compareToIgnoreCase("non") == 0)
 			return (false);
 		return (askToPlayAgain());
+	}
+
+	public static boolean askAnIA()
+	{
+		Scanner sc;
+
+		System.out.println("Souhaitez-vous jouer seul ? (Contre une intelligence artificielle");
+		sc = new Scanner(System.in);
+
 	}
 }
