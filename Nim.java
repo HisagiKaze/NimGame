@@ -32,7 +32,7 @@ class Nim
 					currentPlayer = currentPlayer.getNext();
 				}
 				Console.clear_term();
-				System.out.println("Nombre d'allumettes restantes sur le plateau : " + table.getNbMatchLeft());
+				Console.printNbMatchLeft(table.getNbMatchLeft());
 			}
 			if (table.getNbMatchLeft() < 1)
 				Console.showWinner(currentPlayer.getName());
