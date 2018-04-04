@@ -1,120 +1,55 @@
-import java.util.*;
 /**
- * Inteligence artificielle aleatoire contre joueur
- * @author N'GONDO Cédric
+ * Inteligence artificielle aleatoire contre un joueur
+ * @author POINOT Paul-Aurian
  **/
 class IA_naive
 {
-    String  name;
-    int     nbWin;
-    String namePlayer;
+    private int     nbWins;
 
-    /**
-     * Contructeur IA_naive
-     * @init le nom et le nombre de partie gagnée
-     */
     public IA_naive()
     {
-    	this.name = "Bot";
-    	this.nbWin = 0;
-    }
-    
-    /**
-     *Accesseur de l'attribut namePlayer
-     *@return le  nom du Joueur
-     */
-    public String getNamePlayer()
-    {
-	   return this.namePlayer;
+        this.nbWins = 0;
     }
 
-    /**
-     * Accesseur de l'attribut name
-     * @return le nom de de l'IA
-     */
-    public String getName()
-    {
-	   return this.name;
-    }
-
-    /**
-     * Accesseur de l'attribut nbWin
-     * @return le nombre de parties gangné de l'objet instancié
-     */
-    public int getNbWin()
-    {
-	   return this.nbWin++;
-    }
-
-    /**
-     *Mutateur de l'attribut namePlayer
-     *@param nP correspond au nom du joueur à afficher
-     */
-    public void setNamePlayer(String nP)
-    {
-	   this.namePlayer = nP;
-    }
-
-    /**
-     * Mutateur de l'attribut name
-     * @param n correspond au nom à afficher
-     */
-    public void setName(String n)
-    {
-	   this.name = n;
-    }
-
-    /**
-     * Mutateur de l'attribut nbWin
-     * @param n correspond au nombre de partie gagnée à afficher
-     */
     public void setNbWins()
     {
-	   this.nbWin++;
+        this.nbWins++;
     }
 
-    public static int ligneIa(int [] table)
+    public int getNbWins()
     {
-    	int i;
-    	int size;
-    	boolean cond;
-    	boolean[] trueLine;
-
-    	i = 0;
-    	cond = false;
-    	trueLine = new boolean [table.length];
-    	size = trueLine.length;
-    	while(i < table.length-1)
-    	{
-    	    if(table[i] >  0)
-    		trueLine[i] = true;
-    	    else
-    		trueLine[i] = false;
-    	    i++;
-    	}
-    	i = 0;
-    	while(cond == false)
-    	{
-    	    i = ((int)Math.random() * (size));
-    	    cond = trueLine[i];
-    	}
-    	return i;
+        return (nbWins);
     }
 
-    /**
-     * Méthode qui permet à l'IA de choisir la  ligne et le nombre d'allumette
-     * @param board correspond au allumette
-     * @return la ligne et le nombre d'allumette choisie par l'IA par l'objet Move
-     */
-    public Move ia_Choice(int [] table)
+    public boolean iaPlays(Board board)
     {
-    	Move move;
-    	int randomLine;
-    	int randomNbMatch;
+        Move    iaMove;
+        int     i;
+        int     n;
 
-    	randomNbMatch = 1;
-        randomLine = ligneIa(table);
-    	move = new Move( randomLine,1);
-        return (move);
+        iaMove = new Move();
+        i = -1;
+        while (++i < board.getBoard().length)        // On parcourt le plateau
+        {
+            if (board.getBoard()[i] > 0)               // Si une ligne n'est pas vide
+            {
+                iaMove.setLine(i);
+                iaMove.setMatchNb(iaMatchesChoice(board.getBoard(), i));
+                break;
+            }
+        }
+        if (board.setBoard(iaMove))
+            Console.explainIaMove(iaMove);
+        return (board.getNbMatchLeft() == 1); // S'il ne reste qu'une allumette sur le plateau, l'IA a gagnée.
+    }
+
+    private int iaMatchesChoice(int [] board, int line)
+    {
+        if (board[line] > 3)
+            return ((int)Math.random() * ((3 - 1) + 1) + 1); // (int)Math.random() * ((max - min) + 1)) + min;
+        else if (board[line] == 3)
+            return ((int)Math.random() * ((2 - 1) + 1) + 1);
+        else
+            return (1);
     }
 }

@@ -163,7 +163,7 @@ class Console
 		{
 			try 
 			{
-				System.out.print("Entrez un la taille du plateau : ");
+				System.out.print("Entrez la taille du plateau : ");
 				x = sc.nextInt();
 				btest = true;
 			}
@@ -240,8 +240,21 @@ class Console
 	{
 		Scanner sc;
 
-		System.out.println("Souhaitez-vous jouer seul ? (Contre une intelligence artificielle");
+		System.out.println("Souhaitez-vous jouer seul ? (Contre une intelligence artificielle) Répondez \"Oui\" si vous le souhaitez.");
 		sc = new Scanner(System.in);
-		return (sc.next().compareToIgnoreCase("Oui") == 0);
+		if (sc.next().compareToIgnoreCase("Oui") == 0)
+		{
+			System.out.println("Vous avez choisi de jouer seul.");
+			return (true);
+		}
+		System.out.println("Vous avez choisi de jouer contre quelqu'un.");
+		return (false);
+	}
+
+	public static void explainIaMove(Move iaMove)
+	{
+		clear_term();
+		System.out.print("L'intelligence artificielle aléatoire a retiré ");
+		System.out.println("" + iaMove.getMatchNb() + " allumettes sur la ligne " + (iaMove.getLine() + 1));
 	}
 }

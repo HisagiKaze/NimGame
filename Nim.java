@@ -38,10 +38,9 @@ class Nim
 					currentGame.setNbMove();
 					if (table.getNbMatchLeft() > 1)
 					{
-						bIAWin = artInte.iaPlays(table.getBoard());
+						bIAWin = artInte.iaPlays(table);
 						currentGame.setNbMove();
 					}
-					Console.clear_term();
 				}
 				Console.printNbMatchLeft(table.getNbMatchLeft());
 				if (bIAWin)
