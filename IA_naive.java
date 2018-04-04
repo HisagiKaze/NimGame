@@ -1,3 +1,5 @@
+import java.util.Random;
+
 /**
  * Inteligence artificielle aleatoire contre un joueur
  * @author POINOT Paul-Aurian
@@ -29,9 +31,9 @@ class IA_naive
 
         iaMove = new Move();
         i = -1;
-        while (++i < board.getBoard().length)        // On parcourt le plateau
+        while (++i < board.getBoard().length)           // On parcourt le plateau
         {
-            if (board.getBoard()[i] > 0)               // Si une ligne n'est pas vide
+            if (board.getBoard()[i] > 0)                // Si une ligne n'est pas vide
             {
                 iaMove.setLine(i);
                 iaMove.setMatchNb(iaMatchesChoice(board.getBoard(), i));
@@ -40,15 +42,18 @@ class IA_naive
         }
         if (board.setBoard(iaMove))
             Console.explainIaMove(iaMove);
-        return (board.getNbMatchLeft() == 1); // S'il ne reste qu'une allumette sur le plateau, l'IA a gagnée.
+        return (board.getNbMatchLeft() == 1);           // S'il ne reste qu'une allumette sur le plateau, l'IA a gagnée.
     }
 
     private int iaMatchesChoice(int [] board, int line)
     {
+        Random nb;                                      // Random est une alternative à Math.random apparemment bien plus efficace
+
+        nb = new Random();
         if (board[line] > 3)
-            return ((int)Math.random() * ((3 - 1) + 1) + 1); // (int)Math.random() * ((max - min) + 1)) + min;
+            return (nb.nextInt(3 - 1 + 1) + 1);         // nb.nextInt() * ((max - min) + 1)) + min;
         else if (board[line] == 3)
-            return ((int)Math.random() * ((2 - 1) + 1) + 1);
+            return (nb.nextInt(2 - 1 + 1) +1);
         else
             return (1);
     }

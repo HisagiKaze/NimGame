@@ -68,6 +68,7 @@ class Nim
 	 */
 	public static void main(String[] args) 
 	{
+		Console.clear_term();
 		if (Console.askAnIA())
 			main_IA();
 		else
