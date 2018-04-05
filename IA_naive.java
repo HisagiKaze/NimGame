@@ -2,7 +2,7 @@ import java.util.Random;
 
 /**
  * Inteligence artificielle aleatoire contre un joueur
- * @author N'Gondo Cedric
+ * @author POINOT Paul-Aurian
  **/
 class IA_naive
 {
