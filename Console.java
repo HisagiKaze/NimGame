@@ -142,7 +142,7 @@ class Console
 /**
  * InputMismatchException checks if the user enter 
  * an INTEGER and not something else instead.
- * @return   Forcement un INT > 0
+ * @return   Forcement un INT
  */
 	static int InputMismatchException () {
 
@@ -163,12 +163,10 @@ class Console
 			}
 			catch (java.util.InputMismatchException e) 
 			{
-				System.out.println("Merci d'entrer un chiffre de type Integer supérieur à zéro.");
+				System.out.println("Merci d'entrer un chiffre de type Integer.");
 				btest = false;
 				String purge = sc.next();
 			}
-			if (x <= 0)
-				btest = false;
 		} while (btest == false);
 		sc.reset();
 		return (x);
@@ -200,6 +198,19 @@ class Console
 		System.out.println("Nombre de coups joués dans cette partie : " + i);
 	}
 
+/**
+ * Affiche le nombre d'allumettes restantes sur le plateau
+ * @param i table.getNbMatchLeft()
+ */
+	public static void printNbMatchLeft(int i)
+	{
+		System.out.println("Nombre d'allumettes restantes sur le plateau : " + i);
+	}
+
+/**
+ * Demande à l'utilisateur si il souhaite rejouer une partie
+ * @return vrai si il souhaite rejouer, faux sinon.
+ */
 	public static  boolean askToPlayAgain()
 	{
 		Scanner		sc;
