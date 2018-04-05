@@ -73,8 +73,8 @@ class Nim
 			main_IA();
 		else
 		{
-			GameState 		currentGame;
 			HumanPlayer		currentPlayer;
+			GameState 		currentGame;
 			boolean			bWantToPlayAgain;
 			Board			table;
 			int				i;
