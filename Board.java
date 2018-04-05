@@ -31,7 +31,7 @@ class Board
  */
 	public boolean setBoard(Move move)
 	{
-		if ((move.getLine() <= (this.board.length - 1)  && move.getLine() >= 0) && (move.getMatchNb() >= 1 && move.getMatchNb() <= 3))
+		if ((move.getLine() <= (this.board.length - 1) && move.getLine() >= 0) && (move.getMatchNb() >= 1 && move.getMatchNb() <= 3))
 		{
 			if(this.board[move.getLine()] >= move.getMatchNb())
 			{

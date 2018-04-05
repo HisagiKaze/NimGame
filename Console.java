@@ -21,19 +21,24 @@ class Console
 
 /**
  * Recupere le nom des joueurs.
+ * @param i Nombre de joueur (1 ou 2)
  * @return Un tableau de deux joueurs.
  */
-	public static HumanPlayer getName()
+	public static HumanPlayer getName(int i)
 	{
 		Scanner		sc;
 		HumanPlayer player1;
-		HumanPlayer player2;
 
 		sc = new Scanner(System.in);
 		player1 = new HumanPlayer(sc.next());
-		player2 = new HumanPlayer(sc.next());
-		player1.setNext(player2);
-		player2.setNext(player1);
+		if (i == 2)
+		{
+			HumanPlayer player2;
+
+			player2 = new HumanPlayer(sc.next());
+			player1.setNext(player2);
+			player2.setNext(player1);
+		}
 		return (player1);
 	}
 
@@ -97,6 +102,7 @@ class Console
 	    compt = 0;
 	    while(i < size + 1)
 	    {
+	    	System.out.print("Ligne " + (i + 1) + " :");
 			space = 0;
 			while(space++ < (size + 1 - i))
 			    System.out.print(" ");
@@ -117,7 +123,7 @@ class Console
 	public static void invalidMove(Move move)
 	{
 		System.out.println("Le dernier coup est impossible :");
-		//System.out.println("Ligne du coup / Nombre de ligne maximum : " + (move.getLine() + 1) + "/" + Board.getBoard().length);
+		//System.out.println("Ligne du coup / Nombre de ligne maximum : " + (move.getLine() + 1) + "/" + boardSize);
 		//System.out.println("Nombre d'allumettes detruites / restantes : " + move.getMatchNb() + "/" + Board.getBoard()[Move.getLine() - 1]);
 	}
 
@@ -133,8 +139,8 @@ class Console
 /**
  * Nettoie l'affichage du terminal.
  */
-	public static void clear_term () {
-
+	public static void clear_term () 
+	{
 		System.out.print("\033[H\033[2J");
 		System.out.flush();
 	}
@@ -142,7 +148,7 @@ class Console
 /**
  * InputMismatchException checks if the user enter 
  * an INTEGER and not something else instead.
- * @return   Forcement un INT
+ * @return   Forcement un INT > 0
  */
 	static int InputMismatchException () {
 
@@ -157,16 +163,18 @@ class Console
 		{
 			try 
 			{
-				System.out.print("Entrez un la taille du plateau : ");
+				System.out.print("Entrez la taille du plateau : ");
 				x = sc.nextInt();
 				btest = true;
 			}
 			catch (java.util.InputMismatchException e) 
 			{
-				System.out.println("Merci d'entrer un chiffre de type Integer.");
+				System.out.println("Merci d'entrer un chiffre de type Integer supérieur à zéro.");
 				btest = false;
 				String purge = sc.next();
 			}
+			if (x < 0)
+				btest = false;
 		} while (btest == false);
 		sc.reset();
 		return (x);
@@ -181,12 +189,14 @@ class Console
 		if (i == 0)
 		{
 			System.out.println("Bonjour et bienvenue dans le jeu du Nim");
-			System.out.println("Merci d'entrer le nom des deux joueurs :");
+			System.out.println("Merci d'entrer le nom du ou des joueurs :");
 		}
 		else if (i == 1)
 			System.out.println("Merci. Maintenant veuillez entrer la taille de plateau souhaitee : ");
 		else if (i == 2)
 			System.out.println("Voici donc votre plateau de jeu :");
+		else if (i == 3)
+			System.out.println("Navré, c'est l'intelligence artificielle qui a gagné !");
 	}
 
 /**
@@ -211,7 +221,7 @@ class Console
  * Demande à l'utilisateur si il souhaite rejouer une partie
  * @return vrai si il souhaite rejouer, faux sinon.
  */
-	public static  boolean askToPlayAgain()
+	public static boolean askToPlayAgain()
 	{
 		Scanner		sc;
 		String		str;
@@ -224,5 +234,27 @@ class Console
 		if (str.compareToIgnoreCase("non") == 0)
 			return (false);
 		return (askToPlayAgain());
+	}
+
+	public static boolean askAnIA()
+	{
+		Scanner sc;
+
+		System.out.println("Souhaitez-vous jouer seul ? (Contre une intelligence artificielle) Répondez \"Oui\" si vous le souhaitez.");
+		sc = new Scanner(System.in);
+		if (sc.next().compareToIgnoreCase("Oui") == 0)
+		{
+			System.out.println("Vous avez choisi de jouer seul.");
+			return (true);
+		}
+		System.out.println("Vous avez choisi de jouer contre quelqu'un.");
+		return (false);
+	}
+
+	public static void explainIaMove(Move iaMove)
+	{
+		clear_term();
+		System.out.print("L'intelligence artificielle aléatoire a retiré ");
+		System.out.println("" + iaMove.getMatchNb() + " allumettes sur la ligne " + (iaMove.getLine() + 1));
 	}
 }

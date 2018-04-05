@@ -5,6 +5,7 @@ class GameState
 {
 	private	boolean			state;
 	private	int		 		nbMove;
+	private int 			boardSize;
 
 	/**
 	 * Initialise un nouveau jeu.
@@ -14,6 +15,7 @@ class GameState
 	{
 		this.state = true;
 		this.nbMove = 0;
+		this.boardSize = -1;
 	}
 
 /**
