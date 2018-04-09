@@ -46,7 +46,7 @@ class Nim
 			}
 			if (bIAWin)
 			{
-				Console.script(3); 	// IA a gagnée
+				Console.script(3); // IA a gagnée
 				artInte.setNbWins();
 			}
 			else
