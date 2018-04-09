@@ -78,9 +78,16 @@ class IA
         return (ChoiceList.get(nb.nextInt((ChoiceList.size() - 1) + 1) + 1));
     }
 
+/**
+ * l'IA tente de jouer un coup permettant de revenir sur un noyau ((NbMatchLeft % 3) = 0)
+ * Si elle ne peut pas le faire, elle joue un coup d'attente (aléatoire).
+ * @param  ChoiceList Liste des coups possibles
+ * @param  board      Plateau de jeu en cours
+ * @return            Coup jouer.
+ */
     private Move iaChoiceSmart(ArrayList<Move> ChoiceList, Board board)
     {
-    	boolean 	btest;
+    	boolean 	btest;//Sert à vérifier si le coup existe bel et bien.
     	int 		NbMatchLeft;
     	int 		x;//Nombre d'allumettes a detruire pour atteindre le prochain noyau.
     	int 		i;
@@ -90,7 +97,7 @@ class IA
     	btest = false;
     	if (NbMatchLeft > 3)
     	{
-	    	if ((NbMatchLeft % 3) == 0) //S'il est sur un noyau superieur a 3.
+	    	if ((NbMatchLeft % 3) == 0) //S'il est sur un noyau.
 	    	{
 	    		while (++i < ChoiceList.size())
 	    		{
@@ -104,7 +111,7 @@ class IA
 	    			return (iaChoiceNaive(ChoiceList));
 	    		return(ChoiceList.get(i));
 	    	}
-	    	else if ((NbMatchLeft % 3) != 0) //S'il n'est pas sur un noyeau et est superieur à 3.
+	    	else if ((NbMatchLeft % 3) != 0) //S'il n'est pas sur un noyeau.
 	    	{
 	    		x = 2;
 	    		if (((NbMatchLeft - 1) % 3) == 0)
@@ -124,7 +131,7 @@ class IA
 		    	return (ChoiceList.get(i));
 	    	}
 	    }
-	    else if (NbMatchLeft <= 3) //S'il est égale ou inférieur à 3
+	    else if (NbMatchLeft <= 3)
 	    {
 	    	x = 2;
 	    	if (NbMatchLeft == 2)
