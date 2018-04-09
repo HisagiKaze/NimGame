@@ -7,20 +7,20 @@ class Nim
 {
 	/**
 	 * Appelle toutes les fonctions filles du jeu si une IA est demandée
-	 * @param void Le jeu ne requiert aucun argument en paramètre.
+	 * @param level niveau de l'intelligence artificielle (-1, 0 ou 1).
 	 */
-	public static void main_IA()
+	public static void main_IA(int level)
 	{
 		GameState 	currentGame;
 		HumanPlayer	player;
-		IA_naive 	artInte; 		// Artificial Inteligence
 		boolean		bWantToPlayAgain;
 		boolean		bIAWin;
 		Board 		table;
+		IA 		 	artInte; 		// Artificial Inteligence
 
 		Console.script(0); 			// Greetings & getName
 		player = Console.getName(1);
-		artInte = new IA_naive();
+		artInte = new IA();
 		Console.script(1); 			// table size
 		bWantToPlayAgain = true;
 		bIAWin = false;
@@ -36,7 +36,7 @@ class Nim
 					currentGame.setNbMove();
 					if (table.getNbMatchLeft() > 1)
 					{
-						bIAWin = artInte.iaPlays(table);
+						bIAWin = artInte.iaPlays(table, level);
 						currentGame.setNbMove();
 					}
 				}
@@ -58,6 +58,7 @@ class Nim
 			currentGame.setState(false);
 			bWantToPlayAgain = Console.askToPlayAgain();
 		}
+		Console.printNbWins(player, artInte.getNbWins());
 	}
 
 	/**
@@ -67,8 +68,11 @@ class Nim
 	public static void main(String[] args) 
 	{
 		Console.clear_term();
-		if (Console.askAnIA())
-			main_IA();
+		int i;
+
+		i = Console.askAnIA(); 
+		if (i >= 0)
+			main_IA(i);
 		else
 		{
 			HumanPlayer		currentPlayer;
@@ -104,6 +108,7 @@ class Nim
 				currentGame.setState(false);
 				bWantToPlayAgain = Console.askToPlayAgain();
 			}
+			Console.printNbWins(currentPlayer, currentPlayer.getNext().getNbWins());
 		}
 	}
 }
