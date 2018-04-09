@@ -1,31 +1,46 @@
 import java.util.Random;
 import java.util.ArrayList;
+
 /**
- * Inteligence artificielle aleatoire contre joueur
- * @author N'GONDO Cédric
+ * Inteligence artificielle aleatoire contre un joueur
+ * @author POINOT Paul-Aurian
  **/
 class IA_naive
 {
+    private int     nbWins;
 
 /**
- * Accesseur de l'attribut nbWin
- * @return le nombre de parties gangné de l'objet instancié
+ * Constructeur
+ * @return rien
  */
-    public int getNbWin()
+    public IA_naive()
     {
-	   return this.nbWin;
-	}
+        this.nbWins = 0;
+    }
 
 /**
- * Mutateur de l'attribut nbWin
- * @param n correspond au nombre de partie gagnée à afficher
+ * Mutateur qui incremente le nombre de victoire de l'IA naive
  */
     public void setNbWins()
     {
-		this.nbWin++;
+        this.nbWins++;
     }
 
-    public boolean iaPlays(int [] table)
+/**
+ * Accesseur du nombre de victoire de l'IA naive
+ * @return Nombre de victoire
+ */
+    public int getNbWins()
+    {
+        return (nbWins);
+    }
+
+/**
+ * Joue un coup et vérifie s'il à gagné.
+ * @param  board Plateau de jeu
+ * @return       Vrai si l'IA a gagnée, faux sinon.
+ */
+    public boolean iaPlays(Board board)
     {
         ArrayList<Move>     ChoiceList;
         Move                iaMove;
