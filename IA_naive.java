@@ -42,26 +42,22 @@ class IA_naive
  */
     public boolean iaPlays(Board board)
     {
-        ArrayList   ChoiceList;
-        Move        iaMove;
-        int         i;
+        ArrayList<Move>     ChoiceList;
+        Move                iaMove;
+        int                 i;
+        int                 j;
 
-        ChoiceList = new ArrayList();
+        ChoiceList = new ArrayList<Move>();
         i = -1;
         while (++i < board.getBoard().length)           // On parcourt le plateau
         {
-            if (board.getBoard()[i] > 0)                // Si une ligne n'est pas vide
-            {
-                iaMove.setLine(i);
-                for (int j = 0; (j < board.getBoard()[i]) && (j < 3); j++) //On ajoute un choix possible à la ChoiceList
-                {
-                    iaMove.setMatchNb(j + 1);
-                    ChoiceList.add(iaMove);
-                }
-            }
+            j = 0;
+            if (board.getBoard()[i] > 0)                //Si une ligne du plateau n'est pas vide
+                while ((j < board.getBoard()[i]) && (j < 3))    //Tant que 'j' est inférieur (au nb d'allumettes sur la ligne i) et à 3
+                    ChoiceList.add(new Move(i, ++j));   //On ajoute un choix possible à la ChoiceList
         }
         iaMove = iaChoice(ChoiceList);
-        if (board.setBoard(iaMove))
+        if (board.setBoard(iaMove))                     //Si le move est correct
             Console.explainIaMove(iaMove);
         return (board.getNbMatchLeft() == 1);           // S'il ne reste qu'une allumette sur le plateau, l'IA a gagnée.
     }
@@ -71,12 +67,11 @@ class IA_naive
  * @param ChoiceListe Liste des coups possibles
  * @return       Le coup à jouer
  */
-    private Move iaChoice(ArrayList ChoiceList)
+    private Move iaChoice(ArrayList<Move> ChoiceList)
     {
-        Random  nb;                                      // Random est une alternative à Math.random apparemment bien plus efficace
+        Random  nb;// Random est une alternative à Math.random apparemment bien plus efficace
 
-        nb = new Random();                               //nb.nextInt() * ((max - min) + 1)) + min; Rappel du fonctionnement.
-        nb = nb.nextInt() * ((ChoiceList.size() - 1) + 1) + 1; //Defini nb comme l'index aléatoire entre la fin et le début de la liste.
-        return (ChoiceList.get(nb));                     // Retrourne le Move à l'index aléatoire "nb"
+        nb = new Random();//nb.nextInt((max - min) + 1) + min (pour exclure 0)
+        return (ChoiceList.get(nb.nextInt((ChoiceList.size() - 1) + 1) + 1));
     }
 }
