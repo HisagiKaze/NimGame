@@ -233,6 +233,10 @@ class Console
 		return (askToPlayAgain());
 	}
 
+/**
+ * Demande si le joueur souhaite jouer contre une inteligence artificielle
+ * @return -1 pour ne pas avoir d'IA, 0 pour une facile, 1 pour une difficile
+ */
 	public static int askAnIA()
 	{
 		Scanner sc;
@@ -251,6 +255,10 @@ class Console
 		return (-1);
 	}
 
+/**
+ * Explique ce que vient de jouer l'IA
+ * @param iaMove coup jouer par l'IA
+ */
 	public static void explainIaMove(Move iaMove)
 	{
 		clear_term();
