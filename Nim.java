@@ -1,13 +1,13 @@
 /**
  * Appelle une a une toutes les fonctions pour jouer au Nim.
  * @author Paul-Aurian
- * @version 3.1 Human VS Human
+ * @version 3.2 Human VS IA Naïve
  */
 class Nim
 {
 	/**
 	 * Appelle toutes les fonctions filles du jeu si une IA est demandée
-	 * @param void Le jeu ne requiert aucun parametre argument
+	 * @param void Le jeu ne requiert aucun argument en paramètre.
 	 */
 	public static void main_IA()
 	{
@@ -17,7 +17,6 @@ class Nim
 		boolean		bWantToPlayAgain;
 		boolean		bIAWin;
 		Board 		table;
-		int			i;
 
 		Console.script(0); 			// Greetings & getName
 		player = Console.getName(1);
@@ -29,7 +28,6 @@ class Nim
 		{
 			currentGame = new GameState();
 			table = new Board();
-			i = 0;
 			while (table.getNbMatchLeft() > 1)
 			{
 				Console.ShowBoard(table.getBoard());
@@ -77,7 +75,6 @@ class Nim
 			GameState 		currentGame;
 			boolean			bWantToPlayAgain;
 			Board			table;
-			int				i;
 
 			Console.script(0);
 			currentPlayer = Console.getName(2);
@@ -87,7 +84,6 @@ class Nim
 			{
 				currentGame = new GameState();
 				table = new Board();
-				i = 0;
 				while (table.getNbMatchLeft() > 1)
 				{
 					Console.ShowBoard(table.getBoard());
