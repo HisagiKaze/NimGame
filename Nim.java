@@ -13,14 +13,14 @@ class Nim
 	{
 		GameState 	currentGame;
 		HumanPlayer	player;
-		IA_naive 	artInte; 		// Artificial Inteligence
 		boolean		bWantToPlayAgain;
 		boolean		bIAWin;
 		Board 		table;
+		IA 		 	artInte; 		// Artificial Inteligence
 
 		Console.script(0); 			// Greetings & getName
 		player = Console.getName(1);
-		artInte = new IA_naive();
+		artInte = new IA();
 		Console.script(1); 			// table size
 		bWantToPlayAgain = true;
 		bIAWin = false;
@@ -58,6 +58,7 @@ class Nim
 			currentGame.setState(false);
 			bWantToPlayAgain = Console.askToPlayAgain();
 		}
+		Console.printNbWins(player, artInte.getNbWins());
 	}
 
 	/**
@@ -107,6 +108,7 @@ class Nim
 				currentGame.setState(false);
 				bWantToPlayAgain = Console.askToPlayAgain();
 			}
+			Console.printNbWins(currentPlayer, currentPlayer.getNext().getNbWins());
 		}
 	}
 }

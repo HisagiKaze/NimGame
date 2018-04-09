@@ -205,6 +205,12 @@ class Console
 		System.out.println("Nombre de coups joués dans cette partie : " + i);
 	}
 
+	public static void printNbWins(HumanPlayer a, int b)
+	{
+		System.out.println("Nombre de victoires de " + a.getName() + " : " + a.getNbWins());
+		System.out.println("Nombre de victoires du second joueur : " + b);
+	}
+
 /**
  * Affiche le nombre d'allumettes restantes sur le plateau
  * @param i table.getNbMatchLeft()
