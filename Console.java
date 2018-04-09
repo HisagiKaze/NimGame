@@ -233,7 +233,7 @@ class Console
 		return (askToPlayAgain());
 	}
 
-	public static boolean askAnIA()
+	public static int askAnIA()
 	{
 		Scanner sc;
 
@@ -242,16 +242,19 @@ class Console
 		if (sc.next().compareToIgnoreCase("Oui") == 0)
 		{
 			System.out.println("Vous avez choisi de jouer seul.");
-			return (true);
+			System.out.println("Souhaitez-vous jouer contre une IA facile ou difficile (\"facile\" ou \"difficile\")");
+			if (sc.next().compareToIgnoreCase("facile") == 0)
+				return (0);
+			return (1);
 		}
 		System.out.println("Vous avez choisi de jouer contre quelqu'un.");
-		return (false);
+		return (-1);
 	}
 
 	public static void explainIaMove(Move iaMove)
 	{
 		clear_term();
-		System.out.print("L'intelligence artificielle aléatoire a retiré ");
+		System.out.print("L'intelligence artificielle a retiré ");
 		System.out.println("" + iaMove.getMatchNb() + " allumettes sur la ligne " + (iaMove.getLine() + 1));
 	}
 }

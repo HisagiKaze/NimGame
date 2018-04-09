@@ -9,7 +9,7 @@ class Nim
 	 * Appelle toutes les fonctions filles du jeu si une IA est demandée
 	 * @param void Le jeu ne requiert aucun argument en paramètre.
 	 */
-	public static void main_IA()
+	public static void main_IA(int level)
 	{
 		GameState 	currentGame;
 		HumanPlayer	player;
@@ -36,7 +36,7 @@ class Nim
 					currentGame.setNbMove();
 					if (table.getNbMatchLeft() > 1)
 					{
-						bIAWin = artInte.iaPlays(table);
+						bIAWin = artInte.iaPlays(table, level);
 						currentGame.setNbMove();
 					}
 				}
@@ -67,8 +67,11 @@ class Nim
 	public static void main(String[] args) 
 	{
 		Console.clear_term();
-		if (Console.askAnIA())
-			main_IA();
+		int i;
+
+		i = Console.askAnIA(); 
+		if (i >= 0)
+			main_IA(i);
 		else
 		{
 			HumanPlayer		currentPlayer;
