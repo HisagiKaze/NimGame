@@ -1,15 +1,15 @@
 /**
  * Appelle une a une toutes les fonctions pour jouer au Nim.
  * @author Paul-Aurian
- * @version 3.1 Human VS Human
+ * @version 3.2 Human VS IA Naïve
  */
 class Nim
 {
 	/**
 	 * Appelle toutes les fonctions filles du jeu si une IA est demandée
-	 * @param void Le jeu ne requiert aucun parametre argument
+	 * @param level niveau de l'intelligence artificielle (-1, 0 ou 1).
 	 */
-	public static void main_IA()
+	public static void main_IA(int level)
 	{
 		GameState 	currentGame;
 		HumanPlayer	player;
@@ -17,7 +17,6 @@ class Nim
 		boolean		bWantToPlayAgain;
 		boolean		bIAWin;
 		Board 		table;
-		int			i;
 
 		Console.script(0); 			// Greetings & getName
 		player = Console.getName(1);
@@ -29,7 +28,6 @@ class Nim
 		{
 			currentGame = new GameState();
 			table = new Board();
-			i = 0;
 			while (table.getNbMatchLeft() > 1)
 			{
 				Console.ShowBoard(table.getBoard());
@@ -38,7 +36,7 @@ class Nim
 					currentGame.setNbMove();
 					if (table.getNbMatchLeft() > 1)
 					{
-						bIAWin = artInte.iaPlays(table);
+						bIAWin = artInte.iaPlays(table, level);
 						currentGame.setNbMove();
 					}
 				}
@@ -69,15 +67,17 @@ class Nim
 	public static void main(String[] args) 
 	{
 		Console.clear_term();
-		if (Console.askAnIA())
-			main_IA();
+		int i;
+
+		i = Console.askAnIA(); 
+		if (i >= 0)
+			main_IA(i);
 		else
 		{
 			HumanPlayer		currentPlayer;
 			GameState 		currentGame;
 			boolean			bWantToPlayAgain;
 			Board			table;
-			int				i;
 
 			Console.script(0);
 			currentPlayer = Console.getName(2);
@@ -87,7 +87,6 @@ class Nim
 			{
 				currentGame = new GameState();
 				table = new Board();
-				i = 0;
 				while (table.getNbMatchLeft() > 1)
 				{
 					Console.ShowBoard(table.getBoard());

@@ -97,10 +97,10 @@ class Console
 	    int space;
 	    int compt;
 
-	    i = 0;
+	    i = -1;
 	    size = board.length - 1;
 	    compt = 0;
-	    while(i < size + 1)
+	    while(++i < size + 1)
 	    {
 	    	System.out.print("Ligne " + (i + 1) + " :");
 			space = 0;
@@ -113,7 +113,6 @@ class Console
 			    compt++;
 			}
 			System.out.print("\n");
-			i++;
 	    }
     }
 /**
@@ -122,9 +121,7 @@ class Console
  */
 	public static void invalidMove(Move move)
 	{
-		System.out.println("Le dernier coup est impossible :");
-		//System.out.println("Ligne du coup / Nombre de ligne maximum : " + (move.getLine() + 1) + "/" + boardSize);
-		//System.out.println("Nombre d'allumettes detruites / restantes : " + move.getMatchNb() + "/" + Board.getBoard()[Move.getLine() - 1]);
+		System.out.println("Le dernier coup est impossible.");
 	}
 
 /**
@@ -236,7 +233,11 @@ class Console
 		return (askToPlayAgain());
 	}
 
-	public static boolean askAnIA()
+/**
+ * Demande si le joueur souhaite jouer contre une inteligence artificielle
+ * @return -1 pour ne pas avoir d'IA, 0 pour une facile, 1 pour une difficile
+ */
+	public static int askAnIA()
 	{
 		Scanner sc;
 
@@ -245,16 +246,23 @@ class Console
 		if (sc.next().compareToIgnoreCase("Oui") == 0)
 		{
 			System.out.println("Vous avez choisi de jouer seul.");
-			return (true);
+			System.out.println("Souhaitez-vous jouer contre une IA facile ou difficile (\"facile\" ou \"difficile\")");
+			if (sc.next().compareToIgnoreCase("facile") == 0)
+				return (0);
+			return (1);
 		}
 		System.out.println("Vous avez choisi de jouer contre quelqu'un.");
-		return (false);
+		return (-1);
 	}
 
+/**
+ * Explique ce que vient de jouer l'IA
+ * @param iaMove coup jouer par l'IA
+ */
 	public static void explainIaMove(Move iaMove)
 	{
 		clear_term();
-		System.out.print("L'intelligence artificielle aléatoire a retiré ");
+		System.out.print("L'intelligence artificielle a retiré ");
 		System.out.println("" + iaMove.getMatchNb() + " allumettes sur la ligne " + (iaMove.getLine() + 1));
 	}
 }
