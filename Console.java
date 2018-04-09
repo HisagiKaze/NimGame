@@ -97,10 +97,10 @@ class Console
 	    int space;
 	    int compt;
 
-	    i = 0;
+	    i = -1;
 	    size = board.length - 1;
 	    compt = 0;
-	    while(i < size + 1)
+	    while(++i < size + 1)
 	    {
 	    	System.out.print("Ligne " + (i + 1) + " :");
 			space = 0;
@@ -113,7 +113,6 @@ class Console
 			    compt++;
 			}
 			System.out.print("\n");
-			i++;
 	    }
     }
 /**
@@ -122,9 +121,7 @@ class Console
  */
 	public static void invalidMove(Move move)
 	{
-		System.out.println("Le dernier coup est impossible :");
-		//System.out.println("Ligne du coup / Nombre de ligne maximum : " + (move.getLine() + 1) + "/" + boardSize);
-		//System.out.println("Nombre d'allumettes detruites / restantes : " + move.getMatchNb() + "/" + Board.getBoard()[Move.getLine() - 1]);
+		System.out.println("Le dernier coup est impossible.");
 	}
 
 /**
