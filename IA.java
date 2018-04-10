@@ -74,32 +74,44 @@ class IA
     {
         Random  nb;// Random est une alternative à Math.random apparemment bien plus efficace
 
-        nb = new Random();//nb.nextInt((max - min) + 1) + min (pour exclure 0)
-        return (choiceList.get(nb.nextInt((choiceList.size() - 1) + 1) + 1));
+        nb = new Random();//nb.nextInt((max - min) + 1)
+        return (choiceList.get(nb.nextInt((choiceList.size() - 1) + 1)));
     }
 /**
- * l'IA tente de jouer un coup permettant de revenir sur un noyau ((NbMatchLeft % 3) = 0)
+ * l'IA tente de jouer un coup permettant de revenir sur un noyau "perdant"
  * Si elle ne peut pas le faire, elle joue un coup d'attente (aléatoire).
  * @param  choiceList Liste des coups possibles
  * @param  board      Plateau de jeu en cours
  * @return            Coup jouer.
  */
-    private Move iaChoiceSmart(ArrayList<Move> choiceList, ArrayList<Integer> nodesList, Board board)
+    private Move iaChoiceSmart(ArrayList<Move> choiceList, Board board)
     {
-    	int 	nbMatchLeft;
+    	int 				i;
+    	ArrayList<Integer> 	nodesList;
 
-    	nbMatchLeft = board.nbMatchLeft();
-    	while (i < choiceList.)
+    	i = -1;
+    	nodesList = foundNode(choiceList, board);
+    	if (!nodesList.isEmpty())
+    		while (++i < choiceList.size() - 1)// On parcourt la liste de coups, si on peut atteindre le noyau suivant, on joue le coup.
+    			if (choiceList.get(i).getMatchNb() == (board.getNbMatchLeft() - (nodesList.get(nodesList.size() - 1))))
+    				return (choiceList.get(i));
+    	return (iaChoiceNaive(choiceList));// Sinon, on joue un coup d'attente aléatoire
     }
 
-    private ArrayList foundNode(ArrayList<Move> choiceList, Board board)
+/**
+ * Permet de faire la liste des noeuds du tableau passé en paramètre
+ * @param  choiceList Liste des coups possibles
+ * @param  board      Plateau de jeu
+ * @return            Liste des noeuds "perdant".
+ */
+    private ArrayList<Integer> foundNode(ArrayList<Move> choiceList, Board board)
     {
     	ArrayList<Integer> 	nodesList;
     	int i;
 
     	nodesList = new ArrayList<Integer>();
     	i = 1;
-    	while (i < board.getNbMatchLeft())
+    	while (i <= board.getNbMatchLeft())
     	{
     		nodesList.add(i);
     		i = i + 4;
