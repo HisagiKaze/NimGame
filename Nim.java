@@ -1,7 +1,7 @@
 /**
  * Appelle une a une toutes les fonctions pour jouer au Nim.
  * @author Paul-Aurian
- * @version 3.2 Human VS IA Naïve
+ * @version 3.3 Human VS IA Smart
  */
 class Nim
 {
@@ -80,7 +80,7 @@ class Nim
 			boolean			bWantToPlayAgain;
 			Board			table;
 
-			Console.script(0);
+			Console.script(0);//Greetings & ask for name(s)
 			currentPlayer = Console.getName(2);
 			Console.script(1);
 			bWantToPlayAgain = true;

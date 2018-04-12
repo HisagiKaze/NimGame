@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 /**
  * Gére l'affichage et la saisie
@@ -270,5 +271,19 @@ class Console
 		clear_term();
 		System.out.print("L'intelligence artificielle a retiré ");
 		System.out.println("" + iaMove.getMatchNb() + " allumettes sur la ligne " + (iaMove.getLine() + 1));
+	}
+
+/**
+ * Affiche sur la liste des noyaux trouvés par l'IA smart
+ * sur l'entrée standard
+ * @param nodesList Liste des noyaux détectés par l'IA
+ */
+	public static void printNodes(ArrayList<Integer> nodesList)
+	{
+		int 	y;
+
+		y = -1;
+		while (++y < nodesList.size())
+    		System.out.println("Noyau " + y + " : " + nodesList.get(y));
 	}
 }
