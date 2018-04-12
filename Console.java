@@ -241,9 +241,9 @@ class Console
 
 /**
  * Demande si le joueur souhaite jouer contre une inteligence artificielle
- * @return -1 pour ne pas avoir d'IA, 0 pour une facile, 1 pour une difficile
+ * @return vrai si l'utilisateur veut une IA
  */
-	public static int askAnIA()
+	public static boolean askAnIA()
 	{
 		Scanner sc;
 
@@ -252,13 +252,10 @@ class Console
 		if (sc.next().compareToIgnoreCase("Oui") == 0)
 		{
 			System.out.println("Vous avez choisi de jouer seul.");
-			System.out.println("Souhaitez-vous jouer contre une IA facile ou difficile (\"facile\" ou \"difficile\")");
-			if (sc.next().compareToIgnoreCase("facile") == 0)
-				return (0);
-			return (1);
+			return (true);
 		}
 		System.out.println("Vous avez choisi de jouer contre quelqu'un.");
-		return (-1);
+		return (false);
 	}
 
 /**

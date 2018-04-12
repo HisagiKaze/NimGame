@@ -6,10 +6,9 @@
 class Nim
 {
 	/**
-	 * Appelle toutes les fonctions filles du jeu si une IA est demandée
-	 * @param level niveau de l'intelligence artificielle (-1, 0 ou 1).
+	 * Appelle toutes les fonctions filles du jeu si une IA est demandée.
 	 */
-	public static void main_IA(int level)
+	public static void main_IA()
 	{
 		GameState 	currentGame;
 		HumanPlayer	player;
@@ -36,7 +35,7 @@ class Nim
 					currentGame.setNbMove();
 					if (table.getNbMatchLeft() > 1)
 					{
-						bIAWin = artInte.iaPlays(table, level);
+						bIAWin = artInte.iaPlays(table);
 						currentGame.setNbMove();
 					}
 				}
@@ -68,11 +67,9 @@ class Nim
 	public static void main(String[] args) 
 	{
 		Console.clear_term();
-		int i;
 
-		i = Console.askAnIA(); 
-		if (i >= 0)
-			main_IA(i);
+		if(Console.askAnIA())
+			main_IA();
 		else
 		{
 			HumanPlayer		currentPlayer;
