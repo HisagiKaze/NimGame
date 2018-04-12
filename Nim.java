@@ -28,6 +28,7 @@ class Nim
 		{
 			currentGame = new GameState();
 			table = new Board();
+			currentGame.setMaxToBurn(Console.askMaxToBurn());
 			while (table.getNbMatchLeft() > 1)
 			{
 				Console.ShowBoard(table.getBoard());
@@ -82,12 +83,13 @@ class Nim
 
 			Console.script(0);//Greetings & ask for name(s)
 			currentPlayer = Console.getName(2);
-			Console.script(1);
+			Console.script(1);//Board Size
 			bWantToPlayAgain = true;
 			while (bWantToPlayAgain)
 			{
 				currentGame = new GameState();
 				table = new Board();
+				currentGame.setMaxToBurn(Console.askMaxToBurn());
 				while (table.getNbMatchLeft() > 1)
 				{
 					Console.ShowBoard(table.getBoard());

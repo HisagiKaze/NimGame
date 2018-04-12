@@ -286,4 +286,32 @@ class Console
 		while (++y < nodesList.size())
     		System.out.println("Noyau " + y + " : " + nodesList.get(y));
 	}
+
+	public static int askMaxToBurn()
+	{
+		Scanner 		sc;
+		boolean			btest;
+		int 			i;
+
+		System.out.println("(Tout chiffre inférieur à 1 sera remplacé par 3.)");
+		System.out.print("Merci d'entrer le nombre maximal d'allumettes à brûler par tour : ");
+		sc = new Scanner(System.in);
+		btest = false;
+		i = 0;
+		do 
+		{
+			try 
+			{
+				i = sc.nextInt();
+				btest = true;
+			}
+			catch (java.util.InputMismatchException e)
+			{
+				System.out.println("Merci d'entrer un chiffre de type Integer.");
+				btest = false;
+				String purge = sc.next();
+			}
+		} while (btest == false);
+		return(i);
+	}
 }
