@@ -1,114 +1,65 @@
 /**
  * Appelle une a une toutes les fonctions pour jouer au Nim.
- * @author Paul-Aurian
- * @version 3.2 Human VS IA Naïve
+ * @author Cedric et Paul-Aurian
+ * @version 3.3 Human VS IA Smart
  */
 class Nim
 {
-	/**
-	 * Appelle toutes les fonctions filles du jeu si une IA est demandée
-	 * @param level niveau de l'intelligence artificielle (-1, 0 ou 1).
-	 */
-	public static void main_IA(int level)
+	public static void main(String[] args)
 	{
-		GameState 	currentGame;
-		HumanPlayer	player;
-		boolean		bWantToPlayAgain;
-		boolean		bIAWin;
-		Board 		table;
-		IA 		 	artInte; 		// Artificial Inteligence
+		HumanPlayer 	player;
+		GameState 		currentGame;
+		boolean 		bPlayAgain;
+		boolean 		bIAWin;//A mettre en condition  <------------IA-----------
+		Board 			table;
+		int 			level;
+		IA 				ia;//A mettre en condition  	<------------IA-----------
 
-		Console.script(0); 			// Greetings & getName
-		player = Console.getName(1);
-		artInte = new IA();
-		Console.script(1); 			// table size
-		bWantToPlayAgain = true;
-		bIAWin = false;
-		while (bWantToPlayAgain)
+		Console.script(0);//Greetings
+		level = Console.askAnIA();
+		ia = new IA();//A mettre en condition  			<------------IA-----------
+		bIAWin = false;//A mettre en condition 			<------------IA-----------
+		player = Console.getName((level < 0) ? 2 : 1);
+		Console.script(1);//Size of the board
+		bPlayAgain = true;
+		while (bPlayAgain)
 		{
 			currentGame = new GameState();
 			table = new Board();
+			currentGame.setMaxToBurn(Console.askMaxToBurn());
 			while (table.getNbMatchLeft() > 1)
 			{
 				Console.ShowBoard(table.getBoard());
 				if (table.setBoard(Console.getMove(player.getName())))
 				{
 					currentGame.setNbMove();
-					if (table.getNbMatchLeft() > 1)
+					if ((level > -1) && (table.getNbMatchLeft() > 1))
 					{
-						bIAWin = artInte.iaPlays(table, level);
+						bIAWin = ia.iaPlays(table, level);
 						currentGame.setNbMove();
 					}
+					else if (level < 0)
+						player = player.getNext();
 				}
 				Console.printNbMatchLeft(table.getNbMatchLeft());
 				if (bIAWin)
-					break;
+				{
+					Console.script(2);//Donne l'information que l'ia a gagné
+					ia.setNbWins();
+				}
 			}
-			if (bIAWin)
+			if (!bIAWin)
 			{
-				Console.script(3); // IA a gagnée
-				artInte.setNbWins();
-			}
-			else
-			{
-				Console.showWinner(player.getName());
+				if (level < 0)
+					Console.showWinner(player.getNext().getName());
+				else
+					Console.showWinner(player.getName());
 				player.setNbWins();
 			}
 			Console.nbMovePlayed(currentGame.getNbMove());
 			currentGame.setState(false);
-			bWantToPlayAgain = Console.askToPlayAgain();
+			bPlayAgain = Console.askToPlayAgain();
 		}
-		Console.printNbWins(player, artInte.getNbWins());
-	}
-
-	/**
-	 * Appelle toutes les fonctions filles et gère le bon déroulement du jeu.
-	 * @param args Arguments passés en parametre lors de l'appelle de la fonction.
-	 */
-	public static void main(String[] args) 
-	{
-		Console.clear_term();
-		int i;
-
-		i = Console.askAnIA(); 
-		if (i >= 0)
-			main_IA(i);
-		else
-		{
-			HumanPlayer		currentPlayer;
-			GameState 		currentGame;
-			boolean			bWantToPlayAgain;
-			Board			table;
-
-			Console.script(0);
-			currentPlayer = Console.getName(2);
-			Console.script(1);
-			bWantToPlayAgain = true;
-			while (bWantToPlayAgain)
-			{
-				currentGame = new GameState();
-				table = new Board();
-				while (table.getNbMatchLeft() > 1)
-				{
-					Console.ShowBoard(table.getBoard());
-					if (table.setBoard(Console.getMove(currentPlayer.getName())))
-					{
-						currentGame.setNbMove();
-						currentPlayer = currentPlayer.getNext();
-						Console.clear_term();
-					}
-					Console.printNbMatchLeft(table.getNbMatchLeft());
-				}
-				if (table.getNbMatchLeft() < 1)
-					Console.showWinner(currentPlayer.getName());
-				else
-					Console.showWinner(currentPlayer.getNext().getName());
-				currentPlayer.setNbWins();
-				Console.nbMovePlayed(currentGame.getNbMove());
-				currentGame.setState(false);
-				bWantToPlayAgain = Console.askToPlayAgain();
-			}
-			Console.printNbWins(currentPlayer, currentPlayer.getNext().getNbWins());
-		}
+		Console.printNbWins(player, (level < 0) ? (player.getNext().getNbWins()) : (ia.getNbWins()));
 	}
 }
