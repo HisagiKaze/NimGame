@@ -30,6 +30,8 @@ class Console
 		Scanner		sc;
 		HumanPlayer player1;
 
+
+		System.out.println("Merci d'entrer le nom du ou des joueurs\n(séparés par un espace ou un retour à la ligne si vous ne jouez pas contre une IA) :");
 		sc = new Scanner(System.in);
 		player1 = new HumanPlayer(sc.next());
 		if (i == 2)
@@ -185,15 +187,10 @@ class Console
 	public static void script(int i)
 	{
 		if (i == 0)
-		{
 			System.out.println("Bonjour et bienvenue dans le jeu du Nim");
-			System.out.println("Merci d'entrer le nom du ou des joueurs :");
-		}
 		else if (i == 1)
-			System.out.println("Merci. Maintenant veuillez entrer la taille de plateau souhaitee : ");
+			System.out.println("Merci. Maintenant veuillez entrer la taille de plateau souhaitée : ");
 		else if (i == 2)
-			System.out.println("Voici donc votre plateau de jeu :");
-		else if (i == 3)
 			System.out.println("Navré, c'est l'intelligence artificielle qui a gagné !");
 	}
 
