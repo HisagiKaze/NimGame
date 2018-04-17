@@ -7,6 +7,9 @@ import java.util.ArrayList;
  **/
 class IA
 {
+    /**
+     * nbWins : Nombre de victoire de l'IA.
+     */
     private int             nbWins;
 
 /**

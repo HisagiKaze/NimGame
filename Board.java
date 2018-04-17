@@ -4,6 +4,10 @@
  */
 class Board
 {
+	/**
+	 * board : tableau contenant le nombre d'allumettes sur chaque ligne.
+	 * nbMatchLeft : Nombre d'allumette(s) restante(s).
+	 */
 	private int []	board;
 	private int		nbMatchLeft;
 

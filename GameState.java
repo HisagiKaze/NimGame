@@ -4,9 +4,13 @@
  */
 class GameState
 {
+	/**
+	 * state : Etat du jeu.
+	 * nbMove : Nombre de coup joué.
+	 * maxToBurn : Nombre d'allumette maximal à brûler par coup.
+	 */
 	private	boolean			state;
 	private	int		 		nbMove;
-	//private int 			boardSize;
 	private static int 		maxToBurn;
 
 /**
