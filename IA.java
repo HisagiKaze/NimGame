@@ -53,7 +53,7 @@ class IA
         {
             j = 0;
             if (board.getBoard()[i] > 0)                //Si une ligne du plateau n'est pas vide
-                while ((j < board.getBoard()[i]) && (j < 3))    //Tant que 'j' est inférieur (au nb d'allumettes sur la ligne i) et à 3
+                while ((j < board.getBoard()[i]) && (j < GameState.getMaxToBurn()))    //Tant que 'j' est inférieur (au nb d'allumettes sur la ligne i) et à au nombre maximal d'allumettes à brûler
                     choiceList.add(new Move(i, ++j));   //On ajoute un choix possible à la choiceList
         }
         if (level == 0)
@@ -107,15 +107,34 @@ class IA
     private ArrayList<Integer> foundNode(ArrayList<Move> choiceList, Board board)
     {
     	ArrayList<Integer> 	nodesList;
-    	int i;
+    	boolean 			btest;
+    	int 				[][]arrayToFindNodes;
+    	int 				i;
+    	int 				j;
 
     	nodesList = new ArrayList<Integer>();
-    	i = 1;
-    	while (i <= board.getNbMatchLeft())
+    	arrayToFindNodes = new int [board.getNbMatchLeft()][GameState.getMaxToBurn() + 1];
+    	i = -1;
+    	while (++i <= board.getNbMatchLeft() - 1)
     	{
-    		nodesList.add(i);
-    		i = i + 4;
+    		j = 0;
+    		arrayToFindNodes[i][0] = board.getNbMatchLeft() - i;
+    		while (++j < (GameState.getMaxToBurn() + 1))
+    			arrayToFindNodes[i][j] = arrayToFindNodes[i][0] - j;
     	}
+    	i = arrayToFindNodes.length;
+    	nodesList.add(arrayToFindNodes[--i][0]);
+    	while (--i >= 0)
+    	{
+    		btest = true;
+    		j = 0;
+    		while (++j < (GameState.getMaxToBurn() + 1))
+    			if (arrayToFindNodes[i][j] == nodesList.get(nodesList.size() - 1))
+    				btest = false;
+    		if (btest)
+    			nodesList.add(arrayToFindNodes[i][0]);
+    	}
+    	Console.printNodes(nodesList);
     	return (nodesList);
     }
 }

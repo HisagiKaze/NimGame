@@ -6,6 +6,7 @@ class GameState
 	private	boolean			state;
 	private	int		 		nbMove;
 	private int 			boardSize;
+	private static int 		maxToBurn;
 
 	/**
 	 * Initialise un nouveau jeu.
@@ -16,6 +17,7 @@ class GameState
 		this.state = true;
 		this.nbMove = 0;
 		this.boardSize = -1;
+		this.maxToBurn = 3;
 	}
 
 /**
@@ -36,11 +38,27 @@ class GameState
 		this.nbMove++;
 	}
 
+	public void setMaxToBurn(int n)
+	{
+		if (n < 1)
+			n = 3;
+		this.maxToBurn = n;
+	}
+
 /**
  * Accesseur du nombre de coups joues.
  */
 	public int getNbMove()
 	{
 		return (this.nbMove);
+	}
+
+/**
+ * Accesseur du nombre maximal d'allumettes à bruler
+ * @return [description]
+ */
+	public static int getMaxToBurn()
+	{
+		return (maxToBurn);
 	}
 }

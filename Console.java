@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 /**
  * Gére l'affichage et la saisie
@@ -29,6 +30,8 @@ class Console
 		Scanner		sc;
 		HumanPlayer player1;
 
+
+		System.out.println("Merci d'entrer le nom du ou des joueurs\n(séparés par un espace ou un retour à la ligne si vous ne jouez pas contre une IA) :");
 		sc = new Scanner(System.in);
 		player1 = new HumanPlayer(sc.next());
 		if (i == 2)
@@ -184,15 +187,10 @@ class Console
 	public static void script(int i)
 	{
 		if (i == 0)
-		{
 			System.out.println("Bonjour et bienvenue dans le jeu du Nim");
-			System.out.println("Merci d'entrer le nom du ou des joueurs :");
-		}
 		else if (i == 1)
-			System.out.println("Merci. Maintenant veuillez entrer la taille de plateau souhaitee : ");
+			System.out.println("Merci. Maintenant veuillez entrer la taille de plateau souhaitée : ");
 		else if (i == 2)
-			System.out.println("Voici donc votre plateau de jeu :");
-		else if (i == 3)
 			System.out.println("Navré, c'est l'intelligence artificielle qui a gagné !");
 	}
 
@@ -270,5 +268,47 @@ class Console
 		clear_term();
 		System.out.print("L'intelligence artificielle a retiré ");
 		System.out.println("" + iaMove.getMatchNb() + " allumettes sur la ligne " + (iaMove.getLine() + 1));
+	}
+
+/**
+ * Affiche sur la liste des noyaux trouvés par l'IA smart
+ * sur l'entrée standard
+ * @param nodesList Liste des noyaux détectés par l'IA
+ */
+	public static void printNodes(ArrayList<Integer> nodesList)
+	{
+		int 	y;
+
+		y = -1;
+		while (++y < nodesList.size())
+    		System.out.println("Noyau " + y + " : " + nodesList.get(y));
+	}
+
+	public static int askMaxToBurn()
+	{
+		Scanner 		sc;
+		boolean			btest;
+		int 			i;
+
+		System.out.println("(Tout chiffre inférieur à 1 sera remplacé par 3.)");
+		System.out.print("Merci d'entrer le nombre maximal d'allumettes à brûler par tour : ");
+		sc = new Scanner(System.in);
+		btest = false;
+		i = 0;
+		do 
+		{
+			try 
+			{
+				i = sc.nextInt();
+				btest = true;
+			}
+			catch (java.util.InputMismatchException e)
+			{
+				System.out.println("Merci d'entrer un chiffre de type Integer.");
+				btest = false;
+				String purge = sc.next();
+			}
+		} while (btest == false);
+		return(i);
 	}
 }
