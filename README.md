@@ -7,7 +7,7 @@ Projet Informatique Semestre 2
 | N'GONDO Cédric		| Unknown				|
 
 *Nom du fichier* :
-    *Explications*
+    Explications
     
 *Nim.java* :
     Contient le main. Il appelle toutes les autres fonctions pour jouer au Nim.
