@@ -284,6 +284,11 @@ class Console
     		System.out.println("Noyau " + y + " : " + nodesList.get(y));
 	}
 
+/**
+ * Demande le nombre maximal d'allumettes à brûler par coup.
+ * Rappel : par défaut le nombre sera 3 si le chiffre est invalide (inférieur à 1).
+ * @return Nombre maximal d'allumettes à brûler par coup.
+ */
 	public static int askMaxToBurn()
 	{
 		Scanner 		sc;

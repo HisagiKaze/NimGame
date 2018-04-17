@@ -1,5 +1,6 @@
 /**
- * Status of the game
+ * Statut du jeu.
+ * @author Cedric et Paul-Aurian
  */
 class GameState
 {
@@ -8,10 +9,10 @@ class GameState
 	private int 			boardSize;
 	private static int 		maxToBurn;
 
-	/**
-	 * Initialise un nouveau jeu.
-	 * @param  nbLine int renvoyé par console.getsize()
-	 */
+/**
+ * Initialise un nouveau jeu.
+ * @param  nbLine int renvoyé par console.getsize()
+ */
 	public GameState()
 	{
 		this.state = true;
@@ -38,6 +39,10 @@ class GameState
 		this.nbMove++;
 	}
 
+/**
+ * Mutateur du nombre maximal d'allumettes à brûler.
+ * @param n nombre renvoyé par Console.askMaxToBurn() via le main.
+ */
 	public void setMaxToBurn(int n)
 	{
 		if (n < 1)
@@ -46,7 +51,7 @@ class GameState
 	}
 
 /**
- * Accesseur du nombre de coups joues.
+ * Accesseur du nombre de coups joués.
  */
 	public int getNbMove()
 	{
@@ -54,8 +59,8 @@ class GameState
 	}
 
 /**
- * Accesseur du nombre maximal d'allumettes à bruler
- * @return [description]
+ * Accesseur du nombre maximal d'allumettes à brûler
+ * @return Nombre maximal d'allumettes à brûler.
  */
 	public static int getMaxToBurn()
 	{

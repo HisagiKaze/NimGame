@@ -36,7 +36,8 @@ class IA
     }
 
 /**
- * Joue un coup et vérifie s'il à gagné.
+ * Joue un coup et vérifie s'il a gagné.
+ * Utilise iaChoiceNaive() et/ou iaChoiceSmart()
  * @param  board Plateau de jeu
  * @return       Vrai si l'IA a gagnée, faux sinon.
  */
@@ -99,7 +100,10 @@ class IA
     }
 
 /**
- * Permet de faire la liste des noeuds du tableau passé en paramètre
+ * Permet de faire la liste des noeuds du tableau passé en paramètre.
+ * La fonction crée un tableau de taille [nbMatchLeft][MaxMatchToBurn]
+ * et cherche tous les noeuds (1, puis tous ce ne contenant pas le dernier noeud)
+ * et renvoie finalement une liste contenant ces noeuds.
  * @param  choiceList Liste des coups possibles
  * @param  board      Plateau de jeu
  * @return            Liste des noeuds "perdant".
