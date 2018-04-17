@@ -91,7 +91,7 @@ class Console
  * Affiche le plateau represente par le tableau d’entiers board où 
  * board[i] est le nombre d’allumettes restantes de la ligne i.
  * @author Cedric
- * @param Board 	Nombre d'allumettes restantes sur la ligne i.
+ * @param board 	Nombre d'allumettes restantes sur la ligne i.
  */
 	public static void ShowBoard(int[] board)
     {
@@ -148,7 +148,7 @@ class Console
 /**
  * InputMismatchException checks if the user enter 
  * an INTEGER and not something else instead.
- * @return   Forcement un INT > 0
+ * @return   Forcement un INT supérieur à 0
  */
 	static int InputMismatchException () {
 

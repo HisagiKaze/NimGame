@@ -14,7 +14,6 @@ class IA
 
 /**
  * Constructeur
- * @return rien
  */
     public IA()
     {
@@ -42,6 +41,7 @@ class IA
  * Joue un coup et vérifie s'il a gagné.
  * Utilise iaChoiceNaive() et/ou iaChoiceSmart()
  * @param  board Plateau de jeu
+ * @param level niveau de l'IA (0 facile/naive et 1 difficile/smart)
  * @return       Vrai si l'IA a gagnée, faux sinon.
  */
     public boolean iaPlays(Board board, int level)
@@ -71,7 +71,7 @@ class IA
 
 /**
  * Permet de faire un choix aléatoire dans la liste des coups possible.
- * @param choiceListe Liste des coups possibles
+ * @param choiceList Liste des coups possibles
  * @return       Le coup à jouer
  */
     private Move iaChoiceNaive(ArrayList<Move> choiceList)

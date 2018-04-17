@@ -15,7 +15,6 @@ class GameState
 
 /**
  * Initialise un nouveau jeu.
- * @param  nbLine int renvoyé par console.getsize()
  */
 	public GameState()
 	{
@@ -55,6 +54,7 @@ class GameState
 
 /**
  * Accesseur du nombre de coups joués.
+ * @return Nombre de coup joués.
  */
 	public int getNbMove()
 	{
