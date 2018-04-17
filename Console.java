@@ -31,7 +31,7 @@ class Console
 		HumanPlayer 	player1;
 
 
-		System.out.println("Merci d'entrer le nom du ou des joueurs\n(séparés par un espace ou un retour à la ligne si vous ne jouez pas contre une IA) :");
+		System.out.println("Merci d'entrer le nom du ou des joueurs\n(séparés par un espace ou un retour à la ligne) :");
 		sc = new Scanner(System.in);
 		player1 = new HumanPlayer(sc.next());
 		if (i == 2)
@@ -188,10 +188,8 @@ class Console
 	{
 		if (i == 0)
 			System.out.println("Bonjour et bienvenue dans le jeu du Nim");
-		else if (i == 1)
+		else
 			System.out.println("Merci. Maintenant veuillez entrer la taille de plateau souhaitée : ");
-		else if (i == 2)
-			System.out.println("Navré, c'est l'intelligence artificielle qui a gagné !");
 	}
 
 /**
@@ -235,53 +233,6 @@ class Console
 		if (str.compareToIgnoreCase("non") == 0)
 			return (false);
 		return (askToPlayAgain());
-	}
-
-/**
- * Demande si le joueur souhaite jouer contre une inteligence artificielle
- * @return -1 pour ne pas avoir d'IA, 0 pour une facile, 1 pour une difficile
- */
-	public static int askAnIA()
-	{
-		Scanner 		sc;
-
-		System.out.println("Souhaitez-vous jouer seul ? (Contre une intelligence artificielle) Répondez \"Oui\" si vous le souhaitez.");
-		sc = new Scanner(System.in);
-		if (sc.next().compareToIgnoreCase("Oui") == 0)
-		{
-			System.out.println("Vous avez choisi de jouer seul.");
-			System.out.println("Souhaitez-vous jouer contre une IA facile ou difficile (\"facile\" ou \"difficile\")");
-			if (sc.next().compareToIgnoreCase("facile") == 0)
-				return (0);
-			return (1);
-		}
-		System.out.println("Vous avez choisi de jouer contre quelqu'un.");
-		return (-1);
-	}
-
-/**
- * Explique ce que vient de jouer l'IA
- * @param iaMove coup jouer par l'IA
- */
-	public static void explainIaMove(Move iaMove)
-	{
-		clear_term();
-		System.out.print("L'intelligence artificielle a retiré ");
-		System.out.println("" + iaMove.getMatchNb() + " allumettes sur la ligne " + (iaMove.getLine() + 1));
-	}
-
-/**
- * Affiche sur la liste des noyaux trouvés par l'IA smart
- * sur l'entrée standard
- * @param nodesList Liste des noyaux détectés par l'IA
- */
-	public static void printNodes(ArrayList<Integer> nodesList)
-	{
-		int 			y;
-
-		y = -1;
-		while (++y < nodesList.size())
-    		System.out.println("Noyau " + y + " : " + nodesList.get(y));
 	}
 
 /**
