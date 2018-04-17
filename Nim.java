@@ -42,8 +42,9 @@ class Nim
 						player = player.getNext();
 				}
 				Console.printNbMatchLeft(table.getNbMatchLeft());
-				if (bIAWin)
+				if (bIAWin || table.getNbMatchLeft() < 1)
 				{
+					bIAWin = true;
 					Console.script(2);//Donne l'information que l'ia a gagné
 					ia.setNbWins();
 				}
