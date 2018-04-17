@@ -7,7 +7,7 @@ import java.util.ArrayList;
  **/
 class IA
 {
-    private int     nbWins;
+    private int             nbWins;
 
 /**
  * Constructeur
@@ -73,7 +73,7 @@ class IA
  */
     private Move iaChoiceNaive(ArrayList<Move> choiceList)
     {
-        Random  nb;// Random est une alternative à Math.random apparemment bien plus efficace
+        Random              nb;// Random est une alternative à Math.random apparemment bien plus efficace
 
         nb = new Random();//nb.nextInt((max - min) + 1)
         return (choiceList.get(nb.nextInt((choiceList.size() - 1) + 1)));

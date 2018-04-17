@@ -12,8 +12,8 @@ class Board
  */
 	public Board()
 	{
-		int		size;
-		int		i;
+		int			size;
+		int			i;
 
 		size = Console.getSize();
 		this.board = new int [size];

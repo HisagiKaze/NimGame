@@ -14,7 +14,7 @@ class Console
  */
 	public static int getSize()
 	{
-		int 	boardSize;
+		int 			boardSize;
 
 		boardSize = InputMismatchException();
 		return (boardSize);
@@ -27,8 +27,8 @@ class Console
  */
 	public static HumanPlayer getName(int i)
 	{
-		Scanner		sc;
-		HumanPlayer player1;
+		Scanner			sc;
+		HumanPlayer 	player1;
 
 
 		System.out.println("Merci d'entrer le nom du ou des joueurs\n(séparés par un espace ou un retour à la ligne si vous ne jouez pas contre une IA) :");
@@ -95,10 +95,10 @@ class Console
  */
 	public static void ShowBoard(int[] board)
     {
-	    int i;
-	    int size;
-	    int space;
-	    int compt;
+	    int 			i;
+	    int 			size;
+	    int 			space;
+	    int 			compt;
 
 	    i = -1;
 	    size = board.length - 1;
@@ -152,9 +152,9 @@ class Console
  */
 	static int InputMismatchException () {
 
-		int		x;
-		boolean	btest;
-		Scanner	sc;
+		int				x;
+		boolean			btest;
+		Scanner			sc;
 
 		x = 0;
 		btest = false;
@@ -224,8 +224,8 @@ class Console
  */
 	public static boolean askToPlayAgain()
 	{
-		Scanner		sc;
-		String		str;
+		Scanner			sc;
+		String			str;
 
 		System.out.println("Souhaitez-vous rejouer une partie ?\n(Écrivez \"Oui\" ou \"Non\")");
 		sc = new Scanner(System.in);
@@ -243,7 +243,7 @@ class Console
  */
 	public static int askAnIA()
 	{
-		Scanner sc;
+		Scanner 		sc;
 
 		System.out.println("Souhaitez-vous jouer seul ? (Contre une intelligence artificielle) Répondez \"Oui\" si vous le souhaitez.");
 		sc = new Scanner(System.in);
@@ -277,7 +277,7 @@ class Console
  */
 	public static void printNodes(ArrayList<Integer> nodesList)
 	{
-		int 	y;
+		int 			y;
 
 		y = -1;
 		while (++y < nodesList.size())
