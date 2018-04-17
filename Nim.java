@@ -39,10 +39,13 @@ class Nim
 						currentGame.setNbMove();
 					}
 					else if (level < 0)
+					{
 						player = player.getNext();
+						Console.clear_term();
+					}
 				}
 				Console.printNbMatchLeft(table.getNbMatchLeft());
-				if (bIAWin || table.getNbMatchLeft() < 1)
+				if (bIAWin || ((table.getNbMatchLeft() < 1) && (level >= 0)))
 				{
 					bIAWin = true;
 					Console.script(2);//Donne l'information que l'ia a gagné
@@ -51,7 +54,7 @@ class Nim
 			}
 			if (!bIAWin)
 			{
-				if (level < 0)
+				if (level < 0 && table.getNbMatchLeft() > 0)
 					Console.showWinner(player.getNext().getName());
 				else
 					Console.showWinner(player.getName());
