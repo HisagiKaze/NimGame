@@ -6,7 +6,7 @@ class GameState
 {
 	private	boolean			state;
 	private	int		 		nbMove;
-	private int 			boardSize;
+	//private int 			boardSize;
 	private static int 		maxToBurn;
 
 /**
@@ -17,7 +17,6 @@ class GameState
 	{
 		this.state = true;
 		this.nbMove = 0;
-		this.boardSize = -1;
 		this.maxToBurn = 3;
 	}
 
