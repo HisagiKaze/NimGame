@@ -12,6 +12,7 @@ class Nim
 		boolean 		bPlayAgain;
 		Board 			table;
 
+		Console.clear_term();
 		Console.script(0);//Greetings
 		player = Console.getName(2);
 		Console.script(1);//Size of the board
