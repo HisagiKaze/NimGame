@@ -1,9 +1,13 @@
 /**
  * Gestion du plateau d'allumettes
- * @author POINOT Paul-aurian
+ * @author POINOT Paul-Aurian
  */
 class Board
 {
+	/**
+	 * board : tableau contenant le nombre d'allumettes sur chaque ligne.
+	 * nbMatchLeft : Nombre d'allumette(s) restante(s).
+	 */
 	private int []	board;
 	private int		nbMatchLeft;
 
@@ -12,8 +16,8 @@ class Board
  */
 	public Board()
 	{
-		int		size;
-		int		i;
+		int			size;
+		int			i;
 
 		size = Console.getSize();
 		this.board = new int [size];
@@ -31,7 +35,7 @@ class Board
  */
 	public boolean setBoard(Move move)
 	{
-		if ((move.getLine() <= (this.board.length - 1) && move.getLine() >= 0) && (move.getMatchNb() >= 1 && move.getMatchNb() <= 3))
+		if ((move.getLine() <= (this.board.length - 1) && move.getLine() >= 0) && (move.getMatchNb() >= 1 && move.getMatchNb() <= GameState.getMaxToBurn()))
 		{
 			if(this.board[move.getLine()] >= move.getMatchNb())
 			{

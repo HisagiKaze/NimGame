@@ -8,6 +8,11 @@
  */
 class HumanPlayer
 {
+	/**
+	 * name : Nom du joueur.
+	 * nbWins : Nombre de victoire du joueur.
+	 * next : joueur suivant (null si une IA est demandée)
+	 */
 	private	String		name;
 	private	int 		nbWins;
 	private HumanPlayer next;

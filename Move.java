@@ -6,6 +6,10 @@
  */
 class Move
 {
+	/**
+	 * line : Ligne du coup joué.
+	 * match_nb : Nombre d'allumettes à détruire pour ce coup.
+	 */
 	private	int	line;
 	private int	match_nb;
 

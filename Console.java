@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 /**
  * Gére l'affichage et la saisie
@@ -13,7 +14,7 @@ class Console
  */
 	public static int getSize()
 	{
-		int 	boardSize;
+		int 			boardSize;
 
 		boardSize = InputMismatchException();
 		return (boardSize);
@@ -26,9 +27,11 @@ class Console
  */
 	public static HumanPlayer getName(int i)
 	{
-		Scanner		sc;
-		HumanPlayer player1;
+		Scanner			sc;
+		HumanPlayer 	player1;
 
+
+		System.out.println("Merci d'entrer le nom du ou des joueurs\n(séparés par un espace ou un retour à la ligne) :");
 		sc = new Scanner(System.in);
 		player1 = new HumanPlayer(sc.next());
 		if (i == 2)
@@ -88,19 +91,19 @@ class Console
  * Affiche le plateau represente par le tableau d’entiers board où 
  * board[i] est le nombre d’allumettes restantes de la ligne i.
  * @author Cedric
- * @param Board 	Nombre d'allumettes restantes sur la ligne i.
+ * @param board 	Nombre d'allumettes restantes sur la ligne i.
  */
 	public static void ShowBoard(int[] board)
     {
-	    int i;
-	    int size;
-	    int space;
-	    int compt;
+	    int 			i;
+	    int 			size;
+	    int 			space;
+	    int 			compt;
 
-	    i = 0;
+	    i = -1;
 	    size = board.length - 1;
 	    compt = 0;
-	    while(i < size + 1)
+	    while(++i < size + 1)
 	    {
 	    	System.out.print("Ligne " + (i + 1) + " :");
 			space = 0;
@@ -113,7 +116,6 @@ class Console
 			    compt++;
 			}
 			System.out.print("\n");
-			i++;
 	    }
     }
 /**
@@ -122,9 +124,7 @@ class Console
  */
 	public static void invalidMove(Move move)
 	{
-		System.out.println("Le dernier coup est impossible :");
-		//System.out.println("Ligne du coup / Nombre de ligne maximum : " + (move.getLine() + 1) + "/" + boardSize);
-		//System.out.println("Nombre d'allumettes detruites / restantes : " + move.getMatchNb() + "/" + Board.getBoard()[Move.getLine() - 1]);
+		System.out.println("Le dernier coup est impossible.");
 	}
 
 /**
@@ -148,13 +148,13 @@ class Console
 /**
  * InputMismatchException checks if the user enter 
  * an INTEGER and not something else instead.
- * @return   Forcement un INT > 0
+ * @return   Forcement un INT supérieur à 0
  */
 	static int InputMismatchException () {
 
-		int		x;
-		boolean	btest;
-		Scanner	sc;
+		int				x;
+		boolean			btest;
+		Scanner			sc;
 
 		x = 0;
 		btest = false;
@@ -187,16 +187,9 @@ class Console
 	public static void script(int i)
 	{
 		if (i == 0)
-		{
 			System.out.println("Bonjour et bienvenue dans le jeu du Nim");
-			System.out.println("Merci d'entrer le nom du ou des joueurs :");
-		}
-		else if (i == 1)
-			System.out.println("Merci. Maintenant veuillez entrer la taille de plateau souhaitee : ");
-		else if (i == 2)
-			System.out.println("Voici donc votre plateau de jeu :");
-		else if (i == 3)
-			System.out.println("Navré, c'est l'intelligence artificielle qui a gagné !");
+		else
+			System.out.println("Merci. Maintenant veuillez entrer la taille de plateau souhaitée : ");
 	}
 
 /**
@@ -206,6 +199,12 @@ class Console
 	public static void nbMovePlayed(int i)
 	{
 		System.out.println("Nombre de coups joués dans cette partie : " + i);
+	}
+
+	public static void printNbWins(HumanPlayer a, int b)
+	{
+		System.out.println("Nombre de victoires de " + a.getName() + " : " + a.getNbWins());
+		System.out.println("Nombre de victoires du second joueur : " + b);
 	}
 
 /**
@@ -223,8 +222,8 @@ class Console
  */
 	public static boolean askToPlayAgain()
 	{
-		Scanner		sc;
-		String		str;
+		Scanner			sc;
+		String			str;
 
 		System.out.println("Souhaitez-vous rejouer une partie ?\n(Écrivez \"Oui\" ou \"Non\")");
 		sc = new Scanner(System.in);
@@ -236,25 +235,36 @@ class Console
 		return (askToPlayAgain());
 	}
 
-	public static boolean askAnIA()
+/**
+ * Demande le nombre maximal d'allumettes à brûler par coup.
+ * Rappel : par défaut le nombre sera 3 si le chiffre est invalide (inférieur à 1).
+ * @return Nombre maximal d'allumettes à brûler par coup.
+ */
+	public static int askMaxToBurn()
 	{
-		Scanner sc;
+		Scanner 		sc;
+		boolean			btest;
+		int 			i;
 
-		System.out.println("Souhaitez-vous jouer seul ? (Contre une intelligence artificielle) Répondez \"Oui\" si vous le souhaitez.");
+		System.out.println("(Tout chiffre inférieur à 1 sera remplacé par 3.)");
+		System.out.print("Merci d'entrer le nombre maximal d'allumettes à brûler par tour : ");
 		sc = new Scanner(System.in);
-		if (sc.next().compareToIgnoreCase("Oui") == 0)
+		btest = false;
+		i = 0;
+		do 
 		{
-			System.out.println("Vous avez choisi de jouer seul.");
-			return (true);
-		}
-		System.out.println("Vous avez choisi de jouer contre quelqu'un.");
-		return (false);
-	}
-
-	public static void explainIaMove(Move iaMove)
-	{
-		clear_term();
-		System.out.print("L'intelligence artificielle aléatoire a retiré ");
-		System.out.println("" + iaMove.getMatchNb() + " allumettes sur la ligne " + (iaMove.getLine() + 1));
+			try 
+			{
+				i = sc.nextInt();
+				btest = true;
+			}
+			catch (java.util.InputMismatchException e)
+			{
+				System.out.println("Merci d'entrer un chiffre de type Integer.");
+				btest = false;
+				String purge = sc.next();
+			}
+		} while (btest == false);
+		return(i);
 	}
 }
