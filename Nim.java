@@ -10,15 +10,16 @@ class Nim
 		HumanPlayer 	player;
 		GameState 		currentGame;
 		boolean 		bPlayAgain;
-		boolean 		bIAWin;//A mettre en condition  <------------IA-----------
+		boolean 		bIAWin;
 		Board 			table;
 		int 			level;
-		IA 				ia;//A mettre en condition  	<------------IA-----------
+		IA 				ia;
 
+		Console.clear_term();
 		Console.script(0);//Greetings
 		level = Console.askAnIA();
-		ia = new IA();//A mettre en condition  			<------------IA-----------
-		bIAWin = false;//A mettre en condition 			<------------IA-----------
+		ia = new IA();
+		bIAWin = false;
 		player = Console.getName((level < 0) ? 2 : 1);
 		Console.script(1);//Size of the board
 		bPlayAgain = true;
