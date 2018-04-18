@@ -241,22 +241,16 @@ class Console
  * Demande si le joueur souhaite jouer contre une inteligence artificielle
  * @return -1 pour ne pas avoir d'IA, 0 pour une facile, 1 pour une difficile
  */
-	public static int askAnIA()
+	public static boolean askAnIA()
 	{
 		Scanner 		sc;
 
 		System.out.println("Souhaitez-vous jouer seul ? (Contre une intelligence artificielle) Répondez \"Oui\" si vous le souhaitez.");
 		sc = new Scanner(System.in);
 		if (sc.next().compareToIgnoreCase("Oui") == 0)
-		{
-			System.out.println("Vous avez choisi de jouer seul.");
-			System.out.println("Souhaitez-vous jouer contre une IA facile ou difficile (\"facile\" ou \"difficile\")");
-			if (sc.next().compareToIgnoreCase("facile") == 0)
-				return (0);
-			return (1);
-		}
+			return (true);
 		System.out.println("Vous avez choisi de jouer contre quelqu'un.");
-		return (-1);
+		return (false);
 	}
 
 /**
@@ -268,20 +262,6 @@ class Console
 		clear_term();
 		System.out.print("L'intelligence artificielle a retiré ");
 		System.out.println("" + iaMove.getMatchNb() + " allumettes sur la ligne " + (iaMove.getLine() + 1));
-	}
-
-/**
- * Affiche sur la liste des noyaux trouvés par l'IA smart
- * sur l'entrée standard
- * @param nodesList Liste des noyaux détectés par l'IA
- */
-	public static void printNodes(ArrayList<Integer> nodesList)
-	{
-		int 			y;
-
-		y = -1;
-		while (++y < nodesList.size())
-    		System.out.println("Noyau " + y + " : " + nodesList.get(y));
 	}
 
 /**

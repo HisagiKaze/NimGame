@@ -1,7 +1,7 @@
 /**
  * Appelle une a une toutes les fonctions pour jouer au Nim.
  * @author Cedric et Paul-Aurian
- * @version 3.3 Human VS IA Smart
+ * @version 3.2 Human VS IA Naïve
  */
 class Nim
 {
@@ -11,15 +11,15 @@ class Nim
 		GameState 		currentGame;
 		boolean 		bPlayAgain;
 		boolean 		bIAWin;
+		boolean 		bIAExist;
 		Board 			table;
-		int 			level;
 		IA 				ia;
 
 		Console.script(0);//Greetings
-		level = Console.askAnIA();
+		bIAExist = Console.askAnIA();
 		ia = new IA();
 		bIAWin = false;
-		player = Console.getName((level < 0) ? 2 : 1);
+		player = Console.getName((!bIAExist) ? 2 : 1);
 		Console.script(1);//Size of the board
 		bPlayAgain = true;
 		while (bPlayAgain)
@@ -33,19 +33,19 @@ class Nim
 				if (table.setBoard(Console.getMove(player.getName())))
 				{
 					currentGame.setNbMove();
-					if ((level > -1) && (table.getNbMatchLeft() > 1))
+					if (bIAExist && (table.getNbMatchLeft() > 1))
 					{
-						bIAWin = ia.iaPlays(table, level);
+						bIAWin = ia.iaPlays(table);
 						currentGame.setNbMove();
 					}
-					else if (level < 0)
+					else if (!bIAExist)
 					{
 						player = player.getNext();
 						Console.clear_term();
 					}
 				}
 				Console.printNbMatchLeft(table.getNbMatchLeft());
-				if (bIAWin || ((table.getNbMatchLeft() < 1) && (level >= 0)))
+				if (bIAWin || ((table.getNbMatchLeft() < 1) && bIAExist))
 				{
 					bIAWin = true;
 					Console.script(2);//Donne l'information que l'ia a gagné
@@ -54,7 +54,7 @@ class Nim
 			}
 			if (!bIAWin)
 			{
-				if (level < 0 && table.getNbMatchLeft() > 0)
+				if (!bIAExist && table.getNbMatchLeft() > 0)
 					Console.showWinner(player.getNext().getName());
 				else
 					Console.showWinner(player.getName());
@@ -64,6 +64,6 @@ class Nim
 			currentGame.setState(false);
 			bPlayAgain = Console.askToPlayAgain();
 		}
-		Console.printNbWins(player, (level < 0) ? (player.getNext().getNbWins()) : (ia.getNbWins()));
+		Console.printNbWins(player, (!bIAExist) ? (player.getNext().getNbWins()) : (ia.getNbWins()));
 	}
 }
