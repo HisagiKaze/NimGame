@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"<Unnamed>","l":"Board"},{"p":"<Unnamed>","l":"Console"},{"p":"<Unnamed>","l":"GameState"},{"p":"<Unnamed>","l":"HumanPlayer"},{"p":"<Unnamed>","l":"IA"},{"p":"<Unnamed>","l":"Move"},{"p":"<Unnamed>","l":"Nim"}]
