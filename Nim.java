@@ -15,6 +15,7 @@ class Nim
 		int 			level;
 		IA 				ia;
 
+		Console.clear_term();
 		Console.script(0);//Greetings
 		level = Console.askAnIA();
 		ia = new IA();
