@@ -1,63 +1,42 @@
+import java.util.Arrays;
+
 class FT_ArrayList<T>
 {
-	private Object[]	value;
+	private Object []	elementData;
 	private int 		size;
 
 	public FT_ArrayList()
 	{
-		this.size = 1;
-		this.value = new Object[size];
+		size = 0;
+		elementData = new Object [size];
 	}
 
-	public FT_ArrayList(int initialCapacity)
+	public FT_ArrayList(int Capacity)
 	{
-		if (initialCapacity < 0)
-			initialCapacity = 10;
-		this.size = initialCapacity;
-	}
-
-	public boolean add(T value)
-	{
-		if (ensureCapacity(size + 1))
-		{
-			this.value[size++] = value;
-			return (true);
-		}
-		return (false);
-	}
-
-	private boolean ensureCapacity(int minCapacity)
-	{
-		int 	oldCapacity;
-		int 	i;
-
-		oldCapacity = value.length;
-		if (minCapacity > oldCapacity) 
-		{
-			Object oldData[] = value;
-			i = -1;
-            while (++i < oldData.length - 1)
-            	value[i] = oldData[i];
-            return (true);
-        }
-        return (false);
-	}
-
-	public T get(int index)
-	{
-		if (index >= 0 && index < size)
-			return (valueData(index));
-		throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
-	}
-
-	@SuppressWarnings("unchecked")
-	private T valueData(int index)
-	{
-		return ((T)value[index]);
+		size = Capacity;
+		elementData = new Object [size];
 	}
 
 	public int size()
 	{
 		return (size);
+	}
+
+	@SuppressWarnings("unchecked")
+	public T get(int index)
+	{
+		if (index < 0 || index >= size)
+			throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+		return ((T)elementData[index]);
+	}
+
+	public boolean add(T element)
+	{
+		Object [] 		oldValue;
+
+		oldValue = elementData;
+		elementData = Arrays.copyOf(elementData, ++size);
+		elementData[size - 1] = element;
+		return (true);
 	}
 }
