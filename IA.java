@@ -1,5 +1,4 @@
 import java.util.Random;
-import java.util.ArrayList;
 
 /**
  * Inteligence artificielle aleatoire contre un joueur
@@ -45,12 +44,12 @@ class IA
  */
     public boolean iaPlays(Board board)
     {
-        ArrayList<Move>     choiceList;
+        FT_ArrayList<Move>  choiceList;
         Move                iaMove;
         int                 i;
         int                 j;
 
-        choiceList = new ArrayList<Move>();
+        choiceList = new FT_ArrayList<Move>();
         i = -1;
         while (++i < board.getBoard().length)           // On parcourt le plateau
         {
@@ -70,7 +69,7 @@ class IA
  * @param choiceList Liste des coups possibles
  * @return       Le coup à jouer
  */
-    private Move iaChoiceNaive(ArrayList<Move> choiceList)
+    private Move iaChoiceNaive(FT_ArrayList<Move> choiceList)
     {
         Random              nb;// Random est une alternative à Math.random apparemment bien plus efficace
 
