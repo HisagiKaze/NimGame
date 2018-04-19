@@ -18,7 +18,7 @@ class GameState
 		this.state = true;
 		this.nbMove = 0;
 		this.boardSize = -1;
-		this.maxToBurn = 3;
+		maxToBurn = 3;
 	}
 
 /**
@@ -47,7 +47,7 @@ class GameState
 	{
 		if (n < 1)
 			n = 3;
-		this.maxToBurn = n;
+		maxToBurn = n;
 	}
 
 /**
