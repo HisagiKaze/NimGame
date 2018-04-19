@@ -15,6 +15,7 @@ class Nim
 		Board 			table;
 		IA 				ia;
 
+		Console.clear_term();
 		Console.script(0);//Greetings
 		bIAExist = Console.askAnIA();
 		ia = new IA();
