@@ -1,5 +1,4 @@
 import java.util.Random;
-import java.util.ArrayList;
 
 /**
  * Inteligence artificielle aleatoire contre un joueur
@@ -46,12 +45,12 @@ class IA
  */
     public boolean iaPlays(Board board, int level)
     {
-        ArrayList<Move>     choiceList;
+        FT_ArrayList<Move>     choiceList;
         Move                iaMove;
         int                 i;
         int                 j;
 
-        choiceList = new ArrayList<Move>();
+        choiceList = new FT_ArrayList<Move>();
         i = -1;
         while (++i < board.getBoard().length)           // On parcourt le plateau
         {
@@ -74,7 +73,7 @@ class IA
  * @param choiceList Liste des coups possibles
  * @return       Le coup à jouer
  */
-    private Move iaChoiceNaive(ArrayList<Move> choiceList)
+    private Move iaChoiceNaive(FT_ArrayList<Move> choiceList)
     {
         Random              nb;// Random est une alternative à Math.random apparemment bien plus efficace
 
@@ -88,10 +87,10 @@ class IA
  * @param  board      Plateau de jeu en cours
  * @return            Coup jouer.
  */
-    private Move iaChoiceSmart(ArrayList<Move> choiceList, Board board)
+    private Move iaChoiceSmart(FT_ArrayList<Move> choiceList, Board board)
     {
     	int 				i;
-    	ArrayList<Integer> 	nodesList;
+    	FT_ArrayList<Integer> 	nodesList;
 
     	i = -1;
     	nodesList = foundNode(choiceList, board);
@@ -111,15 +110,15 @@ class IA
  * @param  board      Plateau de jeu
  * @return            Liste des noeuds "perdant".
  */
-    private ArrayList<Integer> foundNode(ArrayList<Move> choiceList, Board board)
+    private FT_ArrayList<Integer> foundNode(FT_ArrayList<Move> choiceList, Board board)
     {
-    	ArrayList<Integer> 	nodesList;
+    	FT_ArrayList<Integer> 	nodesList;
     	boolean 			btest;
     	int 				[][]arrayToFindNodes;
     	int 				i;
     	int 				j;
 
-    	nodesList = new ArrayList<Integer>();
+    	nodesList = new FT_ArrayList<Integer>();
     	arrayToFindNodes = new int [board.getNbMatchLeft()][GameState.getMaxToBurn() + 1];
     	i = -1;
     	while (++i <= board.getNbMatchLeft() - 1)

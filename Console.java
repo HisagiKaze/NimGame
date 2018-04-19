@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.ArrayList;
 
 /**
  * Gére l'affichage et la saisie
@@ -275,7 +274,7 @@ class Console
  * sur l'entrée standard
  * @param nodesList Liste des noyaux détectés par l'IA
  */
-	public static void printNodes(ArrayList<Integer> nodesList)
+	public static void printNodes(FT_ArrayList<Integer> nodesList)
 	{
 		int 			y;
 
