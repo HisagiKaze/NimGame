@@ -22,7 +22,7 @@ Celui qui prendra la dernière allumette aura perdu.
     *Un objet "coup", contenant une ligne et un nombre d'allumette(s).*
 
 **IA.java** :
-    *Joue un coup "naïf" (aléatoire) ou intéligent (en fonction d'une stratégie gagnante).*
+    *Créer la liste des coups possible puis joue un coup "naïf" (aléatoire).*
 
 **HumanPlayer.java** :
     *Contient le d'un joueur, son nombre de victoire et l'adresse du second joueur.*
