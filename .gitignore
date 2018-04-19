@@ -1,4 +1,2 @@
 *.class
-html
-nim.jar
-META-INF
+RepJavadoc
