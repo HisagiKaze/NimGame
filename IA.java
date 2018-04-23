@@ -121,7 +121,7 @@ class IA
 
         nodesList = new FT_ArrayList<Node>();
         i = 0;
-        while (++i < board.getNbMatchLeft() - 1)
+        while (++i < board.getNbMatchLeft())
         {
             j = i - 1;
             k = 0;
@@ -133,12 +133,12 @@ class IA
             while (j > 0 && k++ <= GameState.getMaxToBurn())
                 nodesList.get(i - 1).createSuccessor(nodesList.get(--j));
         }
-        /* //Affiche les Successeurs et parents pour chaque noeuds sur la sortie standard.
+        /*//Affiche les Successeurs et parents pour chaque noeuds sur la sortie standard.
         int y;
         int z;
 
         y = -1;
-        while (++y < nodesList.size() - 1)
+        while (++y < nodesList.size())
         {
             System.out.println("Le noeud " + nodesList.get(y).getValue() + " a ");
             z = -1;
@@ -150,12 +150,11 @@ class IA
             while (++z < nodesList.get(y).getParents().size())
                 System.out.print(nodesList.get(y).getParents().get(z).getValue() + " ");
             System.out.println("\n Fin du noeud \n");
-        }
-        */
+        }*/
         highNodes = new FT_ArrayList<Node>();
         i = 0;
         highNodes.add(nodesList.get(i));
-        while (++i < nodesList.size() - 1)
+        while (++i < nodesList.size())
             if (nodesList.get(i).getSuccessors().doesNotHave(highNodes.get(highNodes.size() - 1)))
                 highNodes.add(nodesList.get(i));
         return (highNodes);
