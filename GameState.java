@@ -15,9 +15,9 @@ class GameState
  */
 	public GameState()
 	{
-		this.state = true;
-		this.nbMove = 0;
-		this.boardSize = -1;
+		state = true;
+		nbMove = 0;
+		boardSize = -1;
 		maxToBurn = 3;
 	}
 
@@ -50,7 +50,7 @@ class GameState
 		maxToBurn = n;
 	}
 
-	public void setBoardSize(int n)
+	public static void setBoardSize(int n)
 	{
 		boardSize = n;
 	}

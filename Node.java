@@ -14,13 +14,13 @@ class Node
 	public void 				createSuccessor(Node x)
 	{
 		if (value > 1)
-			if (x < value && x >= (value - GameState.getMaxToBurn()))
+			if (x.getValue() < value && x.getValue() >= (value - GameState.getMaxToBurn()))
 				successors.add(x);
 	}
 
 	public void 				createParent(Node x)
 	{
-		if (x > value && x <= (value + GameState.getMaxToBurn()))
+		if (x.getValue() > value && x.getValue() <= (value + GameState.getMaxToBurn()))
 			parents.add(x);
 	}
 

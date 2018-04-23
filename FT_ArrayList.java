@@ -44,4 +44,15 @@ class FT_ArrayList<T>
 	{
 		return (size == 0);
 	}
+
+	public boolean doesNotHave(Node x)
+	{
+		int 			i;
+
+		i = -1;
+		while (++i < size)
+			if (elementData[i] == x)
+				return (false);
+		return (true);
+	}
 }

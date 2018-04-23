@@ -94,6 +94,7 @@ class IA
 
     	i = -1;
     	highNodesList = foundNode(choiceList, board);
+        Console.printNodes(highNodesList);
     	if (!highNodesList.isEmpty())
     		while (++i < choiceList.size() - 1)// On parcourt la liste de coups, si on peut atteindre le noyau suivant, on joue le coup.
     			if (choiceList.get(i).getMatchNb() == (board.getNbMatchLeft() - (highNodesList.get(highNodesList.size() - 1).getValue())))
@@ -125,13 +126,32 @@ class IA
             j = i - 1;
             k = 0;
             nodesList.add(new Node(i));
-            while (--j >= 0 && ++k <= GameState.getMaxToBurn())
+            while (--j >= 0 && ++k <= GameState.getMaxToBurn() + 1)
                 nodesList.get(j).createParent(nodesList.get(i - 1));
             j = i - 1;
             k = 0;
-            while (j > 0 && k++ < GameState.getMaxToBurn())
+            while (j > 0 && k++ <= GameState.getMaxToBurn())
                 nodesList.get(i - 1).createSuccessor(nodesList.get(--j));
         }
+        /* //Affiche les Successeurs et parents pour chaque noeuds sur la sortie standard.
+        int y;
+        int z;
+
+        y = -1;
+        while (++y < nodesList.size() - 1)
+        {
+            System.out.println("Le noeud " + nodesList.get(y).getValue() + " a ");
+            z = -1;
+            System.out.print("+++ Pour Successeurs : ");
+            while (++z < nodesList.get(y).getSuccessors().size())
+                System.out.print(nodesList.get(y).getSuccessors().get(z).getValue() + " ");
+            System.out.print("\n--- Pour Parents : ");
+            z = -1;
+            while (++z < nodesList.get(y).getParents().size())
+                System.out.print(nodesList.get(y).getParents().get(z).getValue() + " ");
+            System.out.println("\n Fin du noeud \n");
+        }
+        */
         highNodes = new FT_ArrayList<Node>();
         i = 0;
         highNodes.add(nodesList.get(i));

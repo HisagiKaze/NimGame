@@ -274,13 +274,13 @@ class Console
  * sur l'entrée standard
  * @param nodesList Liste des noyaux détectés par l'IA
  */
-	public static void printNodes(FT_ArrayList<Integer> nodesList)
+	public static void printNodes(FT_ArrayList<Node> nodesList)
 	{
 		int 			y;
 
 		y = -1;
 		while (++y < nodesList.size())
-    		System.out.println("Noyau " + y + " : " + nodesList.get(y));
+    		System.out.println("Noyau " + y + " : " + nodesList.get(y).getValue());
 	}
 
 /**
