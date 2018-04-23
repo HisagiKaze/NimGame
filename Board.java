@@ -20,6 +20,7 @@ class Board
 		int			i;
 
 		size = Console.getSize();
+		GameState.setBoardSize(size);
 		this.board = new int [size];
 		i = -1;
 		while (i++ < this.board.length - 1)

@@ -6,7 +6,7 @@ class GameState
 {
 	private	boolean			state;
 	private	int		 		nbMove;
-	private int 			boardSize;
+	private static int 		boardSize;
 	private static int 		maxToBurn;
 
 /**
@@ -50,6 +50,11 @@ class GameState
 		maxToBurn = n;
 	}
 
+	public void setBoardSize(int n)
+	{
+		boardSize = n;
+	}
+
 /**
  * Accesseur du nombre de coups joués.
  */
@@ -65,5 +70,10 @@ class GameState
 	public static int getMaxToBurn()
 	{
 		return (maxToBurn);
+	}
+
+	public static int getBoardSize()
+	{
+		return (boardSize);
 	}
 }

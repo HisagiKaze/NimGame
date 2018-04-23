@@ -112,33 +112,36 @@ class IA
  */
     private FT_ArrayList<Integer> foundNode(FT_ArrayList<Move> choiceList, Board board)
     {
-    	FT_ArrayList<Integer> 	nodesList;
-    	boolean 			btest;
-    	int 				[][]arrayToFindNodes;
-    	int 				i;
-    	int 				j;
+    	FT_ArrayList<Integer>  nodesList;
+        FT_ArrayList<Integer>  ListToFindNodes;
+    	boolean 			   btest;
+    	int 				   []successors;
+    	int 				   i;
+    	int 				   j;
 
     	nodesList = new FT_ArrayList<Integer>();
-    	arrayToFindNodes = new int [board.getNbMatchLeft()][GameState.getMaxToBurn() + 1];
+    	ListToFindNodes = new FT_ArrayList<Integer>(); //[board.getNbMatchLeft()][GameState.getMaxToBurn() + 1];
+        successors = new int [GameState.getMaxToBurn() + 1];
     	i = -1;
     	while (++i <= board.getNbMatchLeft() - 1)
     	{
+            ListToFindNodes.add(successors)
     		j = 0;
-    		arrayToFindNodes[i][0] = board.getNbMatchLeft() - i;
+    		ListToFindNodes.get(i)[0] = board.getNbMatchLeft() - i;
     		while (++j < (GameState.getMaxToBurn() + 1))
-    			arrayToFindNodes[i][j] = arrayToFindNodes[i][0] - j;
+    			ListToFindNodes.get(0)[j] = ListToFindNodes.get(i)[0] - j;
     	}
-    	i = arrayToFindNodes.length;
-    	nodesList.add(arrayToFindNodes[--i][0]);
+    	i = ListToFindNodes.size();
+    	nodesList.add(ListToFindNodes.get(--i)[0]);
     	while (--i >= 0)
     	{
     		btest = true;
     		j = 0;
     		while (++j < (GameState.getMaxToBurn() + 1))
-    			if (arrayToFindNodes[i][j] == nodesList.get(nodesList.size() - 1))
+    			if (ListToFindNodes.get(i)[j] == nodesList.get(nodesList.size() - 1))
     				btest = false;
     		if (btest)
-    			nodesList.add(arrayToFindNodes[i][0]);
+    			nodesList.add(ListToFindNodes.get(i)[0]);
     	}
     	Console.printNodes(nodesList);
     	return (nodesList);
