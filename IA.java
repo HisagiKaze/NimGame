@@ -75,7 +75,7 @@ class IA
  */
     private Move iaChoiceNaive(FT_ArrayList<Move> choiceList)
     {
-        Random              nb;// Random est une alternative à Math.random apparemment bien plus efficace
+        Random                  nb;// Random est une alternative à Math.random apparemment bien plus efficace
 
         nb = new Random();//nb.nextInt((max - min) + 1)
         return (choiceList.get(nb.nextInt((choiceList.size() - 1) + 1)));
@@ -89,14 +89,14 @@ class IA
  */
     private Move iaChoiceSmart(FT_ArrayList<Move> choiceList, Board board)
     {
-    	int 				i;
-    	FT_ArrayList<Integer> 	nodesList;
+    	int                    i;
+    	FT_ArrayList<Node>     highNodesList;
 
     	i = -1;
-    	nodesList = foundNode(choiceList, board);
-    	if (!nodesList.isEmpty())
+    	highNodesList = foundNode(choiceList, board);
+    	if (!highNodesList.isEmpty())
     		while (++i < choiceList.size() - 1)// On parcourt la liste de coups, si on peut atteindre le noyau suivant, on joue le coup.
-    			if (choiceList.get(i).getMatchNb() == (board.getNbMatchLeft() - (nodesList.get(nodesList.size() - 1))))
+    			if (choiceList.get(i).getMatchNb() == (board.getNbMatchLeft() - (highNodesList.get(highNodesList.size() - 1).getValue())))
     				return (choiceList.get(i));
     	return (iaChoiceNaive(choiceList));// Sinon, on joue un coup d'attente aléatoire
     }
@@ -110,40 +110,41 @@ class IA
  * @param  board      Plateau de jeu
  * @return            Liste des noeuds "perdant".
  */
-    private FT_ArrayList<Integer> foundNode(FT_ArrayList<Move> choiceList, Board board)
+    private FT_ArrayList<Node> foundNode(FT_ArrayList<Move> choiceList, Board board)
     {
-    	FT_ArrayList<Integer>  nodesList;
-        FT_ArrayList<Integer>  ListToFindNodes;
-    	boolean 			   btest;
-    	int 				   []successors;
-    	int 				   i;
-    	int 				   j;
+    	FT_ArrayList<Node>     nodesList;
+        FT_ArrayList<Node>     highNodes;
+        int                    i;
+        int                    j;
+        int                    k;
 
-    	nodesList = new FT_ArrayList<Integer>();
-    	ListToFindNodes = new FT_ArrayList<Integer>(); //[board.getNbMatchLeft()][GameState.getMaxToBurn() + 1];
-        successors = new int [GameState.getMaxToBurn() + 1];
-    	i = -1;
-    	while (++i <= board.getNbMatchLeft() - 1)
-    	{
-            ListToFindNodes.add(successors)
-    		j = 0;
-    		ListToFindNodes.get(i)[0] = board.getNbMatchLeft() - i;
-    		while (++j < (GameState.getMaxToBurn() + 1))
-    			ListToFindNodes.get(0)[j] = ListToFindNodes.get(i)[0] - j;
-    	}
-    	i = ListToFindNodes.size();
-    	nodesList.add(ListToFindNodes.get(--i)[0]);
-    	while (--i >= 0)
-    	{
-    		btest = true;
-    		j = 0;
-    		while (++j < (GameState.getMaxToBurn() + 1))
-    			if (ListToFindNodes.get(i)[j] == nodesList.get(nodesList.size() - 1))
-    				btest = false;
-    		if (btest)
-    			nodesList.add(ListToFindNodes.get(i)[0]);
-    	}
-    	Console.printNodes(nodesList);
-    	return (nodesList);
+        nodesList = new FT_ArrayList<Node>();
+        i = 0;
+        while (++i < board.getNbMatchLeft() - 1)
+        {
+            j = i - 1;
+            k = 0;
+            nodesList.add(new Node(i));
+            while (--j >= 0 && ++k <= GameState.getMaxToBurn())
+                nodesList.get(j).createParent(nodesList.get(i - 1));
+            j = i - 1;
+            k = 0;
+            while (j > 0 && k++ < GameState.getMaxToBurn())
+                nodesList.get(i - 1).createSuccessor(nodesList.get(--j));
+        }
+        highNodes = new FT_ArrayList<Node>();
+        i = 0;
+        highNodes.add(nodesList.get(i));
+        while (++i < nodesList.size() - 1)
+            if (nodesList.get(i).getSuccessors().doesNotHave(highNodes.get(highNodes.size() - 1)))
+                highNodes.add(nodesList.get(i));
+        return (highNodes);
     }
 }
+
+
+
+
+
+
+
