@@ -1,0 +1,38 @@
+class MaillonM
+{
+    Move list;
+    MaillonM next;
+
+    public MaillonM(Move l, MaillonM n)
+    {
+	this.list = l;
+	this.next = n;
+    }
+
+    public MaillonM(MaillonM n)
+    {
+	this.next = n;
+    }
+
+    public Move getList()
+    {
+	return (this.list);
+    }
+
+    public MaillonM getNext()
+    {
+	return (this.next);
+    }
+
+    public void setList(Move l)
+    {
+	this.list = l;
+    }
+
+    public void setNext(MaillonM n)
+    {
+	this.next = n;
+    }
+
+    
+}

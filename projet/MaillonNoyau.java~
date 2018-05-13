@@ -1,0 +1,37 @@
+class MaillonNoyau
+{
+    int info;
+    int n1,n2,n3;
+    MaillonNoyau next;
+    
+    public MaillonNoyau(int l, MaillonNoyau n)
+    {
+	this.info = l;
+	this.next = n;
+    }
+
+    public MaillonNoyau(MaillonNoyau n)
+    {
+	this.next = n;
+    }
+
+    public int getList()
+    {
+	return (this.info);
+    }
+
+    public MaillonNoyau getNext()
+    {
+	return (this.next);
+    }
+
+    public void setList(int l)
+    {
+	this.info = l;
+    }
+
+    public void setNext(MaillonNoyau n)
+    {
+	this.next = n;
+    }
+}

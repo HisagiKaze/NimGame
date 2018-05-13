@@ -1,0 +1,101 @@
+class Graph
+{
+    MaillonNoyau noyau;
+
+    public Graph(MaillonNoyau m)
+    {
+	this.noyau = m;
+    }
+
+    public MaillonNoyau getNoyau()
+    {
+	return (this.noyau);
+    }
+
+    public void setNoyau(MaillonNoyau n)
+    {
+	this.noyau = n;
+    }
+
+    public int elementNoyau()
+    {
+	return (this.noyau.info);
+    }
+
+    public void ajoutNoyau(int match)
+    {
+	int i;
+
+	i = 1;
+	while(i <= match)
+	{
+	    
+	    MaillonNoyau old = this.noyau;
+	    this.noyau = new MaillonNoyau(i , old);
+	    
+	    i  = i + 4;
+	    System.out.print(this.noyau.info);
+	}
+	
+    }
+
+    public MaillonNoyau ajoutpeak(int match)
+    {
+	MaillonNoyau peaks =  this.noyau;
+	int i;
+	int j;
+	boolean pair;
+
+	pair = false;
+	
+
+	i = this.noyau.info;
+	j = 1;
+	peaks.n1 = 0;
+	peaks.n2 = 0;
+	peaks.n3 = 0;
+
+	if(i != match)
+	    pair = true;
+	while(i < match && (pair))
+	{
+	    
+	    MaillonNoyau old = peaks;
+	    if(j == 1)
+		peaks.n1 = i + 1;
+	    if(j == 2)
+		peaks.n2 = i + 1;
+	    if(j == 3)
+		peaks.n3 = i + 1;
+	    
+	        
+	    
+	    j++;
+	    i++;
+	}
+        
+	System.out.print("["+peaks.n1+","+peaks.n2+","+peaks.n3+"]");
+	return peaks;
+	
+    }
+
+  
+    
+    public void showNoyau()
+    {
+	Graph p;
+	
+	p = new Graph(this.noyau);
+
+	System.out.print("[");
+	while(p.noyau != null)
+	{
+	    System.out.print( p.noyau.info );
+	    if(p.noyau.next != null)
+	        System.out.print(";");
+	    p.noyau = p.noyau.next;
+	}
+	System.out.print("]");
+	System.out.println();
+    }
+}
