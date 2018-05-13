@@ -21,7 +21,7 @@ class Nim
 	boolean winsIa;
 	boolean winsPlayer;
 	boolean ends;
-	int ask;
+	int ask, c;
 	int res1, res2;
 
         
@@ -31,7 +31,7 @@ class Nim
 	currentGame = new GameState();
 	while(bwantToPlayAgain)
 	{
-	    
+	    c = -1;
 	    sc = new Scanner(System.in);
 	    Console.script(0);
 	    ask = 0;
@@ -46,16 +46,26 @@ class Nim
 	    ends = false;
 	    winsIa = false;
 	    winsPlayer = false;
+	    System.out.println("Voulez-vous lancer le premier coup ? : (1 --> oui, 0 --> non)");
+	    while(c != 1 && c != 0)
+	    {
+		c = sc.nextInt();
+		if(c != 1 && c != 0)
+		    System.out.println("Retapez 1 ou 0 pour faire votre choix : ");
+	    }
+	    compt = c;
+	    c = 0;
 	    while (table.getNbMatchLeft() > 1 || ends == false)
 		{
 		    Console.ShowBoard(table.getBoard());
-		    compt = 0;
+		    if(c == 1)
+			compt = 0;
 		    while(compt < 2)
 		    {
 			
 			if(compt == 0)
 			{
-			        
+			    c = 1;   
 			    if (table.setBoard(Console.getMove(Bot.getName(), Bot.iaPlays(table.getBoard()))))
 			    {
 				currentGame.setNbMove();
@@ -78,6 +88,7 @@ class Nim
 			}
 			else if(compt == 1)
 			{
+			    c = 1;
 			    Console.ShowBoard(table.getBoard());
 			    if(table.setBoard(Console.getMove(Player1.getName(),table.getBoard())))
 			    {
@@ -142,7 +153,7 @@ class Nim
 	boolean winsIa;
 	boolean winsPlayer;
 	boolean ends;
-	int ask;
+	int ask, c;
 	int res1, res2;
 
 	res1 = 0;
@@ -152,31 +163,40 @@ class Nim
 
 	while(bwantToPlayAgain)
 	{
-		sc = new Scanner(System.in);
-		    
-		Console.script(0);
-	    
-		ask = 0;
-		    
-		Console.script(1);
-		table = new Board();
-
-		tab = table.getBoard();
-		Bot = new Ia_intel(tab);
-		Player1 = Console.getName1();
-		i = 0;
-		Console.clear_term();
-		ends = false;
-		winsIa = false;
-		winsPlayer = false;
+	    c = -1;
+	    sc = new Scanner(System.in);		    
+	    Console.script(0);	    
+	    ask = 0;
+	    Console.script(1);
+	    table = new Board();
+	    tab = table.getBoard();
+	    Bot = new Ia_intel(tab);
+	    Player1 = Console.getName1();
+	    i = 0;
+	    Console.clear_term();
+	    ends = false;
+	    winsIa = false;
+	    winsPlayer = false;
+	    System.out.println("Voulez-vous lancer le premier coup ? : (1 --> oui, 0 --> non)");
+	    while(c != 1 && c != 0)
+	    {
+		c = sc.nextInt();
+		if(c != 1 && c != 0)
+		    System.out.println("Retapez 1 ou 0 pour faire votre choix : ");
+	    }
+	    compt = c;
+	    c = 0;
 		while (table.getNbMatchLeft() > 1 || ends == false)
 		{
+		    
 		    Console.ShowBoard(table.getBoard());
-		    compt = 0;
+		    if(c == 1)
+			compt = 0;
 		    while(compt < 2)
 		    {
 			if(compt == 0)
 			{
+			    c = 1;
 			    if (table.setBoard(Console.getMove(Bot.getName(), Bot.SmartChoice(table.getBoard(), table.getNbMatchLeft()))))
 			    {
 				currentGame.setNbMove();
@@ -197,6 +217,7 @@ class Nim
 			}
 			else if(compt == 1)
 			{
+			    c = 1;
 			    Console.ShowBoard(table.getBoard());
 			    if (table.setBoard(Console.getMove(Player1.getName(), table.getBoard())))
 			    {
