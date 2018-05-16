@@ -3,5 +3,5 @@
 
 | User	| Score	|
 | ------------- |:-------------:|
-| POINOT Paul-Aurian	| Unknown |
-| N'GONDO Cédric		| Unknown |
+| POINOT Paul-Aurian	| 19,5/20 |
+| N'GONDO Cédric		| 14/20 |
